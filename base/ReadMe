@@ -27,3 +27,56 @@ __FUNCTION__ 输出函数名
 7.超全局变量
 会自动把全局变量放进这个超全局变量的数组里
 $GLOBALS['全局变量名'] 来访问全局变量
+
+函数里访问全局变量的方式
+1.
+$a="555555";
+function test(){
+    global  $a;
+    echo  $a;
+}
+test();
+
+2.
+$a="5555551";
+function  test(){
+
+    echo  $GLOBALS['a'];
+}
+test();
+
+8.静态变量,定义在函数内部。
+9.可变函数
+function test()
+{
+    echo "hellow";
+}
+
+$a = 'test';
+$a();
+10.匿名函数
+$a=function(){
+    echo "hellow111";
+};
+$a();
+
+(function(){
+    echo "hellow2222";
+})();
+
+11.闭包函数
+
+use 就是讲外部的局部变量保存在函数内部使用
+
+function  func1(){
+    $num=20001;
+    $func2=function () use ($num){
+        echo $num;
+    };
+
+    $func2();
+}
+
+func1();
+
+
