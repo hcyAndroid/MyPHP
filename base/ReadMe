@@ -80,3 +80,14 @@ function  func1(){
 func1();
 
 
+12.伪类型
+13.系统函数
+print();  返回值是1
+date():  print_r(date("Y-m-d,H:i:s"));
+mt_rand();随机数
+cell();//向上取整
+floor();//向下取整
+function_exists();//判断函数名是否在内存中存在
+14.错误处理
+
+

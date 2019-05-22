@@ -55,17 +55,25 @@ ini_set('display_errors', '1');
 //    echo "hellow2222";
 //})();
 
+//
+//function  func1(){
+//    $num=20001;
+//    $func2=function () use ($num){
+//        echo $num;
+//    };
+//
+//    $func2();
+//}
+//
+//
+//func1();
 
-function  func1(){
-    $num=20001;
-    $func2=function () use ($num){
-        echo $num;
-    };
-
-    $func2();
+function f(){
+    echo "hekk";
 }
+function_exists('f');
 
 
-func1();
+echo function_exists('f');
 
 
