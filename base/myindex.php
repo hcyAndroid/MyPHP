@@ -176,7 +176,7 @@ print_r(microtime());
 //多次导入
 //require 'table.php';
 ////指导入一次
-//require_once 'table.php';
+require_once 'table.php';
 
 
 
@@ -184,9 +184,16 @@ print_r(microtime());
 
 //区别
 
-include 'a.php';
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
-echo "hello,world";
+
+//
+//
+//require 'a.php';
+
+
+//echo "hello,world";
 
 
 //文件加载的原理

@@ -1,2 +1,13 @@
 1.include 和 require 的区别
 
+include 的错误级别较轻（warning），不会影响代码的执行。碰到一次，执行一次
+include_once  只执行一次
+
+
+require 要求较高（Fatal error），如果代码出错不再往下执行，碰到一次，执行一次
+require_once  只执行一次
+
+
+2.为什么总是忽略不掉一些文件，只要是因为提交到了本地仓库，只要不提交就可以忽略这些文件
+3.ps如何配置MAMP
+4.文件加载路径
