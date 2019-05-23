@@ -89,5 +89,55 @@ cell();//向上取整
 floor();//向下取整
 function_exists();//判断函数名是否在内存中存在
 14.错误处理
+15.抛出异常
+trigger_error("errormsg");
+E_USER_NOTICE
+E_USER_WARNING
+E_USER_ERROR
+E_USER_DEPRECATED
+16.自定义错误处理
+/**
+ * @param $errNum
+ * @param $errMsg
+ * @param $errFile
+ * @param $errLine
+ * @param $errContext
+ */
+
+function error_msg($errNum, $errMsg, $errFile, $errLine, $errContext)
+{
+    //查看当前系统可以看到的错误
+    if (!(error_reporting() & $errNum)) {
+        return false;
+    }
+    switch ($errNum) {
+        case E_ERROR:
+        case E_USER_ERROR:
+            echo "在" . $errFile . "文件里的第" . $errLine . "行发生fatal Error,错误信息为:" . $errMsg;
+            break;
+        case E_WARNING:
+        case E_USER_WARNING:
+            echo "在" . $errFile . "文件里的第" . $errLine . "行发生Warning,错误信息为:" . $errMsg;
+            break;
+
+        case E_NOTICE:
+        case E_USER_NOTICE:
+            echo "在" . $errFile . "文件里的第" . $errLine . "行发生E_NOTICE,错误信息为:" . $errMsg;
+            break;
+
+    }
+    return true;
+}
+
+//修改错误机制
+set_error_handler("error_msg");
+$a=10;
+echo $a/0;
+
+17.字符串
+''
+""
+nowdoc
+heredoc
 
 
