@@ -176,3 +176,22 @@ echo str_replace("hcyy","cmj",$str);//将字符串的某个部分替换成另一
 定义数组
 $arr=array('hcy','love','cmj','2019');
 var_dump($arr);
+20.多维数组
+21.数组遍历
+//一维数组遍历
+//foreach ($arr as $key => $value) {
+//    echo $key, "  ", $value, "<br>";
+//}
+
+//foreach ($arr as $value) {
+//
+//    foreach ($value as $k=>$v){
+//        echo $k, "  ", $v, "<br>";
+//    }
+//}
+
+for循环
+for ($i=0;$i<count($arr);$i++){
+    var_dump($arr[$i]);
+    echo "<br>";
+}
