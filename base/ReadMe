@@ -217,3 +217,29 @@ function bubble_sort()
 }
 
 bubble_sort();
+
+选择排序
+
+function select_sort()
+{
+    //从小往大排序
+
+    global $arr;
+
+    for ($i = 0; $len = count($arr), $i < $len; $i++) {
+        $min_pos = $i;//假设最小元素的位置
+        for ($j = $min_pos; $j < $len; $j++) {
+            if ($arr[$j] < $arr[$min_pos]) {
+                $min_pos = $j;
+            }
+        }
+        //找到最小的那个数的位置了，与假设的位置坐交换
+        $temp=$arr[$min_pos];
+        $arr[$min_pos]=$arr[$i];
+        $arr[$i]=$temp;
+    }
+
+    print_r($arr) ;
+}
+
+select_sort();

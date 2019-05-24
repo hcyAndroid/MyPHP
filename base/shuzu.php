@@ -80,25 +80,55 @@ function func2($index)
 echo func1(15);*/
 
 
-$arr = array(1, 4, 2, 9, 7, 5, 8,7,1);
-function bubble_sort()
+$arr = array(1, 4, 2, 9, 7, 5, 8, 7, 1);
+
+
+function select_sort()
 {
+    //从小往大排序
+
     global $arr;
-    //确定轮数
-    //每轮最右边都会确定一位数字
-    for ($i = 0; $length = count($arr), $i < $length; $i++) {
-        for ($j=0;$j<$length-1-$i;$j++){
-            if ($arr[$j]>$arr[$j+1]){
-                $temp=$arr[$j+1];
-                $arr[$j+1]=$arr[$j];
-                $arr[$j]=$temp;
+
+    for ($i = 0; $len = count($arr), $i < $len; $i++) {
+        $min_pos = $i;//假设最小元素的位置
+        for ($j = $min_pos; $j < $len; $j++) {
+            if ($arr[$j] < $arr[$min_pos]) {
+                $min_pos = $j;
             }
         }
+        //找到最小的那个数的位置了，与假设的位置坐交换
+        $temp=$arr[$min_pos];
+        $arr[$min_pos]=$arr[$i];
+        $arr[$i]=$temp;
     }
 
-    print_r($arr);
+    print_r($arr) ;
 }
 
-bubble_sort();
+select_sort();
+
+
+
+
+
+//function bubble_sort()
+//{
+//    global $arr;
+//    //确定轮数
+//    //每轮最右边都会确定一位数字
+//    for ($i = 0; $length = count($arr), $i < $length; $i++) {
+//        for ($j=0;$j<$length-1-$i;$j++){
+//            if ($arr[$j]>$arr[$j+1]){
+//                $temp=$arr[$j+1];
+//                $arr[$j+1]=$arr[$j];
+//                $arr[$j]=$temp;
+//            }
+//        }
+//    }
+//
+//    print_r($arr);
+//}
+//
+//bubble_sort();
 
 
