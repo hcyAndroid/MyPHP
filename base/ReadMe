@@ -195,3 +195,25 @@ for ($i=0;$i<count($arr);$i++){
     var_dump($arr[$i]);
     echo "<br>";
 }
+22.排序
+冒泡排序的特点：两两相比，每轮都能确定一个数
+$arr = array(1, 4, 2, 9, 7, 5, 8,7,1);
+function bubble_sort()
+{
+    global $arr;
+    //确定轮数
+    //每轮最右边都会确定一位数字
+    for ($i = 0; $length = count($arr), $i < $length; $i++) {
+        for ($j=0;$j<$length-1-$i;$j++){
+            if ($arr[$j]>$arr[$j+1]){
+                $temp=$arr[$j+1];
+                $arr[$j+1]=$arr[$j];
+                $arr[$j]=$temp;
+            }
+        }
+    }
+
+    print_r($arr);
+}
+
+bubble_sort();

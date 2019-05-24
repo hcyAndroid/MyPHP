@@ -42,12 +42,63 @@ var_dump($arr[0]);*/
     echo "<br>";
 }*/
 
-$arr=array(1,'name'=>'hcy2019','age'=>22,'sex'=>'男',5);
+//$arr=array(1,'name'=>'hcy2019','age'=>22,'sex'=>'男',5);
+//
+////each函数指针操作
+//
+//
+//
+//while (list($key,$value)=each($arr)){
+//   echo "key==".$key." "."value==".$value."<br>";
+//}
 
-//each函数指针操作
 
+/*function func1($index)
+{
+    if ($index <= 0) {
+        return 0;
+    }
 
-
-while (list($key,$value)=each($arr)){
-   echo "key==".$key." "."value==".$value."<br>";
+    if ($index == 1 || $index == 2) {
+        return 1;
+    }
+    return func1($index - 1) + func1($index - 2);
 }
+
+
+function func2($index)
+{
+    $sum = 0;
+    for ($i = 1; $i <= $index; $i++) {
+        $sum += func1($i);
+
+    }
+
+    return $sum;
+}
+
+echo func1(15);*/
+
+
+$arr = array(1, 4, 2, 9, 7, 5, 8,7,1);
+function bubble_sort()
+{
+    global $arr;
+    //确定轮数
+    //每轮最右边都会确定一位数字
+    for ($i = 0; $length = count($arr), $i < $length; $i++) {
+        for ($j=0;$j<$length-1-$i;$j++){
+            if ($arr[$j]>$arr[$j+1]){
+                $temp=$arr[$j+1];
+                $arr[$j+1]=$arr[$j];
+                $arr[$j]=$temp;
+            }
+        }
+    }
+
+    print_r($arr);
+}
+
+bubble_sort();
+
+
