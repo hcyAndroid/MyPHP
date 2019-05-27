@@ -218,7 +218,7 @@ function bubble_sort()
 
 bubble_sort();
 
-选择排序
+选择排序，不稳定
 
 function select_sort()
 {
@@ -243,3 +243,6 @@ function select_sort()
 }
 
 select_sort();
+
+
+插入排序 ，少量，稳定

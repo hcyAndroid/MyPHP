@@ -83,32 +83,69 @@ echo func1(15);*/
 $arr = array(1, 4, 2, 9, 7, 5, 8, 7, 1);
 
 
-function select_sort()
+function quick_sort($arr)
 {
-    //从小往大排序
 
-    global $arr;
 
-    for ($i = 0; $len = count($arr), $i < $len; $i++) {
-        $min_pos = $i;//假设最小元素的位置
-        for ($j = $min_pos; $j < $len; $j++) {
-            if ($arr[$j] < $arr[$min_pos]) {
-                $min_pos = $j;
-            }
-        }
-        //找到最小的那个数的位置了，与假设的位置坐交换
-        $temp=$arr[$min_pos];
-        $arr[$min_pos]=$arr[$i];
-        $arr[$i]=$temp;
+    $len=count($arr);
+    if ($len<=1){
+        return $arr;
     }
 
-    print_r($arr) ;
+    $larr=$rarr=array();
+
+    for ($i=1;$i<$len;$i++){
+
+        if ($arr[$i]<$arr[0]){
+            $larr[]=$arr[$i];
+
+        }else{
+            $rarr[]=$arr[$i];
+        }
+    }
+
+
+
+
+
+
+
+
 }
 
-select_sort();
+
+insert_sort();
 
 
 
+
+
+
+
+
+//function select_sort()
+//{
+//    //从小往大排序
+//
+//    global $arr;
+//
+//    for ($i = 0; $len = count($arr), $i < $len; $i++) {
+//        $min_pos = $i;//假设最小元素的位置
+//        for ($j = $min_pos; $j < $len; $j++) {
+//            if ($arr[$j] < $arr[$min_pos]) {
+//                $min_pos = $j;
+//            }
+//        }
+//        //找到最小的那个数的位置了，与假设的位置坐交换
+//        $temp=$arr[$min_pos];
+//        $arr[$min_pos]=$arr[$i];
+//        $arr[$i]=$temp;
+//    }
+//
+//    print_r($arr) ;
+//}
+//
+//select_sort();
 
 
 //function bubble_sort()
