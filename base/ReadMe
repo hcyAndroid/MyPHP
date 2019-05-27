@@ -246,3 +246,8 @@ select_sort();
 
 
 插入排序 ，少量，稳定
+
+22.文件操作
+readfile() 函数读取文件，并把它写入输出缓冲。
+file_exists($filepath)  判断文件是否存在
+

@@ -80,7 +80,7 @@ function func2($index)
 echo func1(15);*/
 
 
-$arr = array(1, 4, 2, 9, 7, 5, 8, 7, 1);
+/*$arr = array(1, 4, 2, 9, 7, 5, 8, 7, 1);
 
 
 function quick_sort($arr)
@@ -114,7 +114,7 @@ function quick_sort($arr)
 }
 
 
-insert_sort();
+insert_sort();*/
 
 
 
@@ -167,5 +167,14 @@ insert_sort();
 //}
 //
 //bubble_sort();
+
+$arr=array(1,2,3,4,5);
+$arr=array('name'=>'hcy','age'=>12,'sex'=>'男');
+
+echo  json_encode($arr);
+
+foreach ($arr as $key => $value){
+    echo "key==".$key." value=".$value."<br>";
+}
 
 
