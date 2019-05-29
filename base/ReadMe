@@ -176,11 +176,38 @@ echo str_replace("hcyy","cmj",$str);//将字符串的某个部分替换成另一
 
 19.数组  可以存放多个类型
 
+数组的分类:索引数组 和 关联数组(字典)
+
+
+
+关联数组
+$arr=array('name'=>'hcy2019','age'=>123,'sex'=>'男');
+
+
+
+
+
+
+
+
+
+
 定义数组
 $arr=array('hcy','love','cmj','2019');
 var_dump($arr);
 20.多维数组
 21.数组遍历
+var_dump(array_keys($arr));  所有的key  array
+var_dump(array_values($arr)); 所有的value   array
+var_dump(array_key_exists("name",$arr));  判断某个key是否存在
+
+
+
+
+
+
+
+
 //一维数组遍历
 //foreach ($arr as $key => $value) {
 //    echo $key, "  ", $value, "<br>";
@@ -292,6 +319,12 @@ mac host路径
 php.ini打开扩展
 phpinfo 查看扩展
 查看httpd_config  php.ini的配置路径
+
+
+25.php repl环境
+
+控制台  php -a
+
 
 
 
