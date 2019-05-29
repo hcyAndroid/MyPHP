@@ -151,7 +151,10 @@ echo $a/0;
 nowdoc
 heredoc
 18.字符串处理方法
-strlen($a); //字符串长度,一个中文三个字节
+
+strlen($a); //拉丁文字符串长度,一个中文三个字节
+mb_strlen($str);//获取宽字符的长度，能准确获取中文+英文的真实长度
+
 mb_strlen($a);//字符创长度,指定字符集的时候一个中文一个字节
 //数组转字符串
 $list = [1, 2, 3,"hcy"];
@@ -283,4 +286,14 @@ sudo apachectl restart
 
 mac host路径
 /private/etc/hosts
+
+
+24.配置扩展
+php.ini打开扩展
+phpinfo 查看扩展
+查看httpd_config  php.ini的配置路径
+
+
+
+
 

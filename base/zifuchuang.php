@@ -67,13 +67,23 @@ $tag="哈哈哈哈";*/
 
 
 //查找字符串首次出现的位置
-$str="hcyy2019";
+$str="上山打老虎2019hcy";
+
+echo strlen($str)."<br>";
+
+
+echo mb_strlen($str);//获取宽字符的长度，能准确获取中文+英文的真实长度
+
+
+phpinfo();
+
+
 //echo strpos($str,'y');
 //最后一次出现的位置
 //echo strrpos($str,'y');
 //$str="hcyy2019";
 //将字符串的某个部分替换成另一个部分组成新的字符串
-echo str_replace("hcyy","cmj",$str);
+//echo str_replace("hcyy","cmj",$str);
 
 
 
