@@ -199,8 +199,10 @@ var_dump($arr);
 21.数组遍历
 var_dump(array_keys($arr));  所有的key  array
 var_dump(array_values($arr)); 所有的value   array
-var_dump(array_key_exists("name",$arr));  判断某个key是否存在
-
+判断某个key是否存在
+var_dump(array_key_exists("name",$arr));
+isset($arr['name'])  变量是否定义
+empty($arr['name'])  当变量未定义或者变量定义了但值为null或者''，0，'0'，"0"  ===true  转布尔值的
 
 
 
