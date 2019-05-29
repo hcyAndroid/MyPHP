@@ -251,3 +251,36 @@ select_sort();
 readfile() 函数读取文件，并把它写入输出缓冲。
 file_exists($filepath)  判断文件是否存在
 
+23.配置一个虚拟主机
+/private/etc/apache2/extra/httpd-vhosts.conf
+
+#加一个虚拟主机
+#把任意IP的80端口绑定上
+
+<VirtualHost *:80>
+    #一台虚拟主机的根目录
+    DocumentRoot "/Users/hcy/PhpstormProjects/MyPHP"
+    <Directory "/Users/hcy/PhpstormProjects/MyPHP">
+        #开启目录结构浏览（Indexes）和软链接目录访问(FollowSymLinks)
+        Options Indexes FollowSymLinks
+        #不允许目录内.htaccess 文件覆盖此处配置
+        AllowOverride None
+        #允许所有人访问该目录
+        Require all granted
+    </Directory>
+    #虚拟主机的域名
+    ServerName hcy2019.io
+    ServerAlias www.hcy2019.io
+    #错误日志目录
+    ErrorLog "/Users/hcy/PhpstormProjects/MyPHP/errorlog/hcy2019.io-error_log"
+    #自定义日志 common是错误级别
+    CustomLog "/Users/hcy/PhpstormProjects/MyPHP/errorlog/hcy2019.io-access_log" common
+</VirtualHost>
+
+重启apache
+
+sudo apachectl restart
+
+mac host路径
+/private/etc/hosts
+
