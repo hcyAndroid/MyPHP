@@ -1,11 +1,13 @@
-1.include 和 require 的区别
+1.include 和 require 的区别 (php载入文件的四种方式)
 
 include 的错误级别较轻（warning），不会影响代码的执行。碰到一次，执行一次
 include_once  只执行一次
+载入文件不存在，只会报⚠️
 
 
 require 要求较高（Fatal error），如果代码出错不再往下执行，碰到一次，执行一次
 require_once  只执行一次
+一旦被载入的文件不存在，就会报致命错误。当前文件不再往下执行
 
 
 2.为什么总是忽略不掉一些文件，只要是因为提交到了本地仓库，只要不提交就可以忽略这些文件
@@ -326,6 +328,30 @@ phpinfo 查看扩展
 25.php repl环境
 
 控制台  php -a
+
+
+26.时间处理
+time();//获取秒
+echo date("Y-m-d,H:i:s");; //获取年月日,时分秒
+date_default_timezone_set("PRC");//设置时区
+//对时间格式化
+$time='2019-05-30,15:25';
+//先转为时间戳
+$timestmp=strtotime($time);
+echo  date("Y?m?d===H:i:s",$timestmp);
+
+27.常量
+定义后不能被修改，也是临时存放的容器
+一般程序的配置信息需要用到常量
+
+define("PI",3.14);
+
+常量不需要$
+
+28.表单处理
+
+
+
 
 
 

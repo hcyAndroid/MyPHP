@@ -128,10 +128,14 @@ function error_msg($errNum, $errMsg, $errFile, $errLine, $errContext)
 
 
 
+
+
 //修改错误机制
 
 set_error_handler("error_msg");
 $a=10;
 echo $a/0;
+
+require_once 'table.php';
 
 
