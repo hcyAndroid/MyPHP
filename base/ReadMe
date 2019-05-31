@@ -30,6 +30,14 @@ __FUNCTION__ 输出函数名
 会自动把全局变量放进这个超全局变量的数组里
 $GLOBALS['全局变量名'] 来访问全局变量
 
+
+
+
+
+
+
+
+
 函数里访问全局变量的方式
 1.
 $a="555555";
@@ -206,12 +214,6 @@ var_dump(array_key_exists("name",$arr));
 isset($arr['name'])  变量是否定义
 empty($arr['name'])  当变量未定义或者变量定义了但值为null或者''，0，'0'，"0"  ===true  转布尔值的
 
-
-
-
-
-
-
 //一维数组遍历
 //foreach ($arr as $key => $value) {
 //    echo $key, "  ", $value, "<br>";
@@ -358,6 +360,19 @@ define("PI",3.14);
 不设置method默认是get
 3.表单元素（表单域）必须有name
 4.表单中必须有提交方法
+
+$_GET 用于接收get请求地址中提交的数据
+$_POST 用于接受请求体中提交的数据，(一般是post提交的参数
+$_REQUEST 能接受get/post请求提交的数据
+
+
+29.get与post的区别
+get  的url长度是有限的2000个字符
+
+
+
+
+
 
 
 
