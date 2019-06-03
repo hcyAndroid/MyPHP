@@ -375,21 +375,32 @@ define("PI",3.14);
 28.表单处理
 可以提交的input   type='submit/image'
 <button>提交2</button>  也可以提交 默认type='submit'
-
 1.必须要有form标签
 2.指定form标签的action和method属性的属性值
 不设置action默认是当前页面
 不设置method默认是get
 3.表单元素（表单域）必须有name
 4.表单中必须有提交方法
-
 $_GET 用于接收get请求地址中提交的数据
 $_POST 用于接受请求体中提交的数据，(一般是post提交的参数
 $_REQUEST 能接受get/post请求提交的数据
 
+接受和检验
+
+1.校验参数的完整性
+持久化
+响应
+
+
 
 29.get与post的区别
 get  的url长度是有限的2000个字符
+
+
+30.label  的作用
+对标签的解释说明
+
+
 
 
 

@@ -7,11 +7,10 @@
 <body>
 <form action="../base/register.php" method="post">
 
-    用户名：<input type="text" name="user_name"> <br>
-    密码: <input type="password" name="password"> <br>
-    确认密码: <input type="password" name="password_s"> <br>
+    用户名：<label for="user_name"><input type="text" name="user_name" id="user_name"></label> <br>
+    密码: <label for="password"> <input type="password" name="password" id="password"> </label><br>
+    确认密码: <label for="password_s"><input type="password" name="password_s" id="password_s"></label> <br>
     <label><input type="checkbox" name="is_agree" value="1"> 统一协议</label> <br>
-
     <button>注册</button>
 
 </form>
