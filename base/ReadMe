@@ -287,6 +287,28 @@ select_sort();
 readfile() 函数读取文件，并把它写入输出缓冲。
 file_exists($filepath)  判断文件是否存在
 
+
+文件写入 a+  FILE_APPEND指追加操作
+
+        $handle = fopen($filename, "a+");
+        $str = fwrite($handle, $userinfo);
+        fclose($handle);
+
+
+file_put_contents($filename, $userinfo, FILE_APPEND);
+
+
+没有文件可以自动创建文件
+sudo chmod -R 777   目标文件夹/文件
+
+
+
+
+
+
+
+
+
 23.配置一个虚拟主机
 /private/etc/apache2/extra/httpd-vhosts.conf
 
