@@ -1,0 +1,38 @@
+1.http 通信过程
+客户端 对域名先查找本地hosts文件有没有对应ip，如果没有就去请求DNS服务器，
+查找对应域名的ip地址，然后通过ip以及端口与服务端建立通道
+
+收到服务器的'包',根据content-type处理响应的内容，开始界面渲染。
+
+
+
+
+Host: localhost:63343
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Cookie: Webstorm-91a8f251=010b5b92-7bda-48b2-a14f-b911fb6350c7; Phpstorm-9bd8916c=1d074b2f-cb88-475b-8ff1-1cc122018191
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+
+
+服务端：
+根据客户端提交过来的'包'，获取请求路径
+根据请求路径对应的文件扩展名找到文件的MIME TYPE
+判断文件类型是否是静态文件
+服务端把要发给客户端的数据打成'包',通过连接通道发回给客户端
+
+HTTP/1.1 200 OK
+content-type: text/html
+server: PhpStorm 2019.1.1
+date: Thu, 6 Jun 2019 06:33:33 GMT
+X-Frame-Options: SameOrigin
+X-Content-Type-Options: nosniff
+x-xss-protection: 1; mode=block
+cache-control: private, must-revalidate
+last-modified: Thu, 6 Jun 2019 03:30:21 GMT
+content-length: 669
+

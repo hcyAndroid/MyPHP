@@ -427,7 +427,7 @@ move_uploaded_file($files['tmp_name'], '../file/' . $files['name']);
 php.ini
 upload_max_filesize = 2M
 
-32.
+
 
 
 
