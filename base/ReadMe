@@ -391,18 +391,43 @@ $_REQUEST 能接受get/post请求提交的数据
 持久化
 响应
 
-
-
 29.get与post的区别
 get  的url长度是有限的2000个字符
 
 
 30.label  的作用
 对标签的解释说明
+31.文件上传
+post请求
+enctype  编码类型
+
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data"></form>
+
+</body>
 
 
+   $files = $_FILES['avatar'];
+
+    if ($files['error']==0){
+        echo '上传成功';
+    }
+
+UPLOAD_ERR_OK=0  常量  代表上传成功
 
 
+error ：1   文件上传大小的限制
+
+
+//将上传的文件的临时目录移动到网站目录下
+参数一：临时目录  参数二：网站目录下
+move_uploaded_file($files['tmp_name'], '../file/' . $files['name']);
+此方法有返回值，判断是否返回成功
+
+文件上传大小的限制
+php.ini
+upload_max_filesize = 2M
+
+32.
 
 
 

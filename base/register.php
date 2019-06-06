@@ -1,28 +1,52 @@
 <?php
 //var_dump($_POST);
 
+/**
+ *
+ */
 
-if ($_SERVER['REQUEST_METHOD'] === "POST") :
+
+function register()
+{
 
     if (empty($_POST['user_name'])) :
         //要么没提交，要么为空
-        $userName_error = 'user_name要么没提交，要么为空';
+        $GLOBALS['msg'] = 'user_name要么没提交，要么为空';
+        return;
     else:
         $username = $_POST['user_name'];
     endif;
+
+
     if (empty($_POST['password'])):
         //要么没提交，要么为空
-        $password_error = 'password要么没提交，要么为空';
+        $GLOBALS['msg'] = 'password要么没提交，要么为空';
+        return;
     endif;
+
+
     if (empty($_POST['password_s'])):
         //要么没提交，要么为空
-        $password_s_error = 'password_s要么没提交，要么为空';
+        $GLOBALS['msg'] = 'password_s要么没提交，要么为空';
+        return;
     endif;
 
     if (empty($_POST['is_agree'])):
         //要么没提交，要么为空
-        $is_agree_error = 'is_agree要么没提交，要么为空';
+        $GLOBALS['msg'] = 'is_agree要么没提交，要么为空';
+        return;
     endif;
+
+
+    echo '注册成功';
+
+
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] === "POST") :
+    register();
+
 
 //    if ($_POST['password_s'] === $_POST['password']) {
 //        $userinfo = $_POST['user_name'] . '|' . $_POST['password'] . "\n";
@@ -35,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") :
 //    } else {
 //        echo '密码不一致';
 //    }
-
+    //value="<?php echo isset($username) ? $username : "hcy2018" "
 
 endif; ?>
 
@@ -52,31 +76,33 @@ endif; ?>
     <table>
         <tr>
             <td>用户名：</td>
-            <td><label for="user_name"><input type="text" name="user_name" id="user_name" value="<?php echo isset($username)?$username:"hcy2018"?>"></label></td>
-            <?php if ($userName_error): ?>
-                <td><?php echo $userName_error ?></td>
+            <td><label for="user_name"><input type="text" name="user_name" id="user_name"
+                                              ></label>
+            </td>
+            <?php if ($GLOBALS['msg']): ?>
+                <td><?php echo $GLOBALS['msg'] ?></td>
             <?php endif; ?>
         </tr>
         <tr>
             <td>密码:</td>
             <td><label for="password"> <input type="password" name="password" id="password"> </label></td>
 
-            <?php if ($password_error): ?>
-                <td><?php echo $password_error ?></td>
+            <?php if ($GLOBALS['msg']): ?>
+                <td><?php echo $GLOBALS['msg'] ?></td>
             <?php endif; ?>
         </tr>
         <tr>
             <td>确认密码:</td>
             <td><label for="password_s"><input type="password" name="password_s" id="password_s"></label></td>
-            <?php if ($password_s_error): ?>
-                <td><?php echo $password_s_error ?></td>
+            <?php if ($GLOBALS['msg']): ?>
+                <td><?php echo $GLOBALS['msg'] ?></td>
             <?php endif; ?>
 
         </tr>
         <tr>
             <td><label><input type="checkbox" name="is_agree" value="1"> 统一协议</label></td>
-            <?php if ($is_agree_error): ?>
-                <td><?php echo $is_agree_error ?></td>
+            <?php if ($GLOBALS['msg']): ?>
+                <td><?php echo $GLOBALS['msg'] ?></td>
             <?php endif; ?>
         </tr>
         <tr>
