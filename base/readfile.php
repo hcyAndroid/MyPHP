@@ -1,6 +1,6 @@
 <table border="1">
 
-    <?php $filepath = "testfile.text";
+    <?php $filepath = "testfile.txt";
     //读文件
     if (file_exists($filepath)):
         $file = fopen($filepath, 'r');

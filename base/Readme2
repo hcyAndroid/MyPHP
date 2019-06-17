@@ -36,3 +36,37 @@ cache-control: private, must-revalidate
 last-modified: Thu, 6 Jun 2019 03:30:21 GMT
 content-length: 669
 
+
+三次握手的目的是确保连接时可靠的。
+
+
+
+2.页面跳转
+
+header('Location:index.html')  在响应头中添加一个LOcation的头信息,客户端接收到这个头信息会自动
+跳转到头信息的地址。不能循环重定向
+
+3.json 数据的表述手段
+字面量：是代码中表述数据的一种手段
+
+json与js字面量的区别
+1.json  属性要用""
+2.json  字符串要用""
+3.json  不能有注释
+4.json  没有undefined
+把json数据转对象的过程称为反序列化
+$arr = json_decode($content,true);//对象转关联数组
+
+
+4.doc+tab 快速在php页面生成html代码
+
+
+
+5.多文件上传
+
+
+
+
+
+
+
