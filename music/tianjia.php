@@ -80,43 +80,80 @@ function addMusic()
 
     $image = $_FILES['images'];
 
-    if ($image['error'] !== UPLOAD_ERR_OK) {
+    //多文件长传
+    for ($i = 0; $i < count($image['name']); $i++) {
+        //校验是否上传成功
+        if ($image['error'][$i] !== UPLOAD_ERR_OK) {
+            $GLOBALS["error_msg"] = $image['name'][$i] . '文件上传失败';
+            return;
+        }
+        //校验文件类型
+        $allowed_type_image = array('image/png');
+        if (!in_array($image['type'][$i], $allowed_type_image)) {
+            $GLOBALS["error_msg"] = $image['name'][$i] . '文件格式非法,只能上传图片';
+            return;
+        }
+        //校验文件大小
 
-        $GLOBALS["error_msg"] = '请提交图片文件';
-        return;
+        if ($image['size'][$i] >= 5 * 1024 * 1024) {
+            $GLOBALS["error_msg"] = $image['name'][$i] . '文件超出1M';
+            return;
+        }
+
+        if ($image['size'][$i] <= 1 * 10) {
+            $GLOBALS["error_msg"] = $image['name'][$i] . '文件小于10K';
+            return;
+        }
+
+        //长传了文件,但还在临时目录中，开始移动
+        //将上传的文件重新命名
+        $source_images[$i] = uniqid() . '-' . $image['name'][$i];
+        if (!move_uploaded_file($image['tmp_name'][$i], '../file/' . $source_images[$i])) {
+
+            $GLOBALS["error_msg"] = $image['name'][$i] . '提交图片文件失败';
+            return;
+        }
+
     }
+
+
+//    if ($image['error'] !== UPLOAD_ERR_OK) {
+//
+//        $GLOBALS["error_msg"] = '请提交图片文件';
+//        return;
+//    }
 
 
     //校验文件大小
+//
+//    if ($image['size'] >= 5 * 1024 * 1024) {
+//        $GLOBALS["error_msg"] = '文件超出1M';
+//        return;
+//    }
+//
+//    if ($image['size'] <= 1 * 10) {
+//        $GLOBALS["error_msg"] = '文件小于10K';
+//        return;
+//    }
+//    //校验文件类型
+//
+//    $allowed_type_image = array('image/png');
+//
+//    if (!in_array($image['type'], $allowed_type_image)) {
+//        $GLOBALS["error_msg"] = '文件格式非法,只能上传图片';
+//        return;
+//    }
 
-    if ($image['size'] >= 5 * 1024 * 1024) {
-        $GLOBALS["error_msg"] = '文件超出1M';
-        return;
-    }
 
-    if ($image['size'] <= 1 * 10) {
-        $GLOBALS["error_msg"] = '文件小于10K';
-        return;
-    }
-    //校验文件类型
-
-    $allowed_type_image = array('image/png');
-
-    if (!in_array($image['type'], $allowed_type_image)) {
-        $GLOBALS["error_msg"] = '文件格式非法,只能上传图片';
-        return;
-    }
-
-
-    //长传了文件,但还在临时目录中，开始移动
-    //将上传的文件重新命名
-    $source_images = uniqid() . '-' . $image['name'];
-
-    if (!move_uploaded_file($image['tmp_name'], '../file/' . $source_images)) {
-
-        $GLOBALS["error_msg"] = '提交图片文件失败';
-        return;
-    }
+//    //长传了文件,但还在临时目录中，开始移动
+//    //将上传的文件重新命名
+//    $source_images = uniqid() . '-' . $image['name'];
+//
+//    if (!move_uploaded_file($image['tmp_name'], '../file/' . $source_images)) {
+//
+//        $GLOBALS["error_msg"] = '提交图片文件失败';
+//        return;
+//    }
 
 
     $title = $_POST['title'];
@@ -184,9 +221,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         </div>
 
+        <!--        multiple可以让一个文件域多选-->
         <div class="form-group">
             <label for="images">海报</label>
-            <input type="file" id="images" name="images" class="form-control">
+            <input type="file" id="images" name="images[]" class="form-control" multiple>
 
         </div>
 

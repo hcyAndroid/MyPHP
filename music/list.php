@@ -37,7 +37,16 @@ var_dump($arr); ?>
                 <td><?php echo $value->id ?></td>
                 <td><?php echo $value->title ?></td>
                 <td><?php echo $value->artist ?></td>
-                <td><img src="<?php echo 'http://hcy2019.io/file/' . $value->images ?>" alt=""></td>
+                <td>
+                    <?php
+                    foreach ($value->images as $valueImag):?>
+
+                        <img src="<?php echo 'http://hcy2019.io/file/' . $valueImag ?>" alt="">
+
+                    <?php endforeach; ?>
+
+
+                </td>
                 <td>
                     <audio src="<?php echo 'http://hcy2019.io/file/' . $value->source ?>" controls></audio>
                 </td>
