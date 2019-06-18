@@ -13,7 +13,7 @@ var_dump($arr); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BootStrap</title>
+    <title>音乐列表</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>

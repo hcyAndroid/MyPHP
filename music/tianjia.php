@@ -195,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>添加</title>
+    <title>音乐添加</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
