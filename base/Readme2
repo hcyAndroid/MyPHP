@@ -64,6 +64,63 @@ $arr = json_decode($content,true);//对象转关联数组
 
 5.多文件上传
 
+  <!--        multiple可以让一个文件域多选-->
+        <div class="form-group">
+            <label for="images">海报</label>
+            <input type="file" id="images" name="images[]" class="form-control" multiple>
+
+        </div>
+
+
+
+
+var_dump($_FILES['images']);
+    //校验文件逻辑
+    if (empty($_FILES['images'])) {
+        //客户端没提交音乐文件
+
+        $GLOBALS["error_msg"] = '请提交图片文件';
+        return;
+    }
+
+    $image = $_FILES['images'];
+
+    //多文件长传
+    for ($i = 0; $i < count($image['name']); $i++) {
+        //校验是否上传成功
+        if ($image['error'][$i] !== UPLOAD_ERR_OK) {
+            $GLOBALS["error_msg"] = $image['name'][$i] . '文件上传失败';
+            return;
+        }
+        //校验文件类型
+        $allowed_type_image = array('image/png');
+        if (!in_array($image['type'][$i], $allowed_type_image)) {
+            $GLOBALS["error_msg"] = $image['name'][$i] . '文件格式非法,只能上传图片';
+            return;
+        }
+        //校验文件大小
+
+        if ($image['size'][$i] >= 5 * 1024 * 1024) {
+            $GLOBALS["error_msg"] = $image['name'][$i] . '文件超出1M';
+            return;
+        }
+
+        if ($image['size'][$i] <= 1 * 10) {
+            $GLOBALS["error_msg"] = $image['name'][$i] . '文件小于10K';
+            return;
+        }
+
+        //长传了文件,但还在临时目录中，开始移动
+        //将上传的文件重新命名
+        $source_images[$i] = uniqid() . '-' . $image['name'][$i];
+        if (!move_uploaded_file($image['tmp_name'][$i], '../file/' . $source_images[$i])) {
+
+            $GLOBALS["error_msg"] = $image['name'][$i] . '提交图片文件失败';
+            return;
+        }
+
+    }
+
 
 
 

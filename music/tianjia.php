@@ -4,6 +4,7 @@ function addMusic()
 {
 
     if (empty($_POST['title'])) {
+        //TODO:
 
         $GLOBALS["error_msg"] = '请输入音乐标题';
 
