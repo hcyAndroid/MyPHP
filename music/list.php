@@ -51,7 +51,7 @@ var_dump($arr); ?>
                     <audio src="<?php echo 'http://hcy2019.io/file/' . $value->source ?>" controls></audio>
                 </td>
                 <td>
-                    <button class="btn btn-danger  btn-sm">删除</button>
+                    <a class="btn btn-danger  btn-sm"  href="delete.php?id=<?php echo $value->id?>">删除</a>
                 </td>
             </tr>
         <?php endforeach; ?>

@@ -120,6 +120,29 @@ var_dump($_FILES['images']);
         }
 
     }
+6.从数组中删除一条数据
+
+foreach ($jsonObj as $key => $obj) {
+    if ($obj['id'] !== $needDeleteId) {
+
+        //break;
+    } else {
+        $index = array_search($obj, $jsonObj);
+        //echo "有数据" . $key.'==='.$a['title'].'、、'.$index;
+        //从数组中删除
+        $delete = array_splice($jsonObj, $index, 1);
+        echo '<pre>';
+        var_dump($delete);
+        echo '</pre>';
+        var_dump($delete[0]['id']);
+
+        echo '<pre>';
+        var_dump($jsonObj);
+        echo '</pre>';
+
+    }
+}
+
 
 
 
