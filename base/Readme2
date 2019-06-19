@@ -143,8 +143,57 @@ foreach ($jsonObj as $key => $obj) {
     }
 }
 
+6.mysql 数据库操作
+
+$connection=@mysqli_connect('127.0.0.1','root','12345678','stus');
 
 
+@mysqli_connect  加@忽略错误信息
+
+//基于数据库连接对象，执行一次数据库操作
+$query=mysqli_query($connection,'select * from stud');//返回的不是结果，返回的是查询对象
+
+object(mysqli_result)#2 (5) {
+  ["current_field"]=>
+  int(0)
+  ["field_count"]=>
+  int(6)
+  ["lengths"]=>
+  NULL
+  ["num_rows"]=>
+  int(7)
+  ["type"]=>
+  int(0)
+}
+
+//拿着查询对象，再到数据库中逐行取出数据
+
+mysqli_fetch_assoc($query)//以关联数组的方式从数据库取出数据
+
+1.读取查询到的数据
+$query = mysqli_query($connection, 'select * from stud');
+toast($query);
+$arr = array();
+for ($i=0;$i<$query->num_rows;$i++){
+    $arr[] = mysqli_fetch_assoc($query);
+}
+toast($arr);
+
+2.$query = mysqli_query($connection, 'select * from stud');
+  toast($query);
+  $arr = array();
+
+  $row=mysqli_fetch_assoc($query);
+  while ($row){
+      $arr[]=$row;
+      $row=mysqli_fetch_assoc($query);
+  }
+
+
+
+3.while ($row=mysqli_fetch_assoc($query)){
+      $arr[]=$row;
+  }
 
 
 
