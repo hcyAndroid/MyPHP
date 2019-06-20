@@ -33,3 +33,13 @@ function upload_files($fileSource, $allowType, $targetPath)
     return $target;
 
 }
+
+
+/**
+ * @param $fileName 文件名
+ * @return mixed  获取文件的扩展名
+ */
+
+function  getFileExtension($fileName){
+    return pathinfo($fileName,PATHINFO_EXTENSION);
+}

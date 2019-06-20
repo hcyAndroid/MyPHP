@@ -48,8 +48,6 @@ function add()
         $file_name = $_FILES['img']['name'];
 
 
-
-
         echo $file_name;
 
 

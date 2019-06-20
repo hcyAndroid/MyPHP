@@ -170,7 +170,7 @@ object(mysqli_result)#2 (5) {
 
 mysqli_fetch_assoc($query)//以关联数组的方式从数据库取出数据
 
-1.读取查询到的数据
+A.读取查询到的数据
 $query = mysqli_query($connection, 'select * from stud');
 toast($query);
 $arr = array();
@@ -194,6 +194,43 @@ toast($arr);
 3.while ($row=mysqli_fetch_assoc($query)){
       $arr[]=$row;
   }
+
+  //用对象的方式操作数据库
+
+   $conenction = new mysqli('127.0.0.1', 'root', '12345678', 'stus');
+
+        if ($conenction->connect_error){
+            die("连接失败");
+        }
+        echo "连接成功";
+
+
+        $str="insert into users values (null,'$username','$gender','$birthday',null)";
+
+        if ($conenction->query($str)===TRUE){
+            echo "插入数据成功";
+            header('Location:userlist.php');
+        }else{
+            echo $conenction->error;
+        }
+
+
+        $conenction->close();
+
+B.释放操作
+//释放查询操作
+mysqli_free_result($query);
+//断开connection连接
+mysqli_close($connection);
+
+
+
+7.mysql 编码问题
+mysqli_set_charset($connection,'utf8');
+
+
+
+
 
 
 

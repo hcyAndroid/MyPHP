@@ -12,19 +12,26 @@ if (!$connection) {
 //基于数据库连接对象，执行一次数据库操作
 $query = mysqli_query($connection, 'select * from stud');
 toast($query);
-$arr = array();
-
-
-while ($row=mysqli_fetch_assoc($query)){
-    $arr[]=$row;
+if (!$query) {
+    exit('mysql数据库操作失败');
+    //return;
 }
-
+$arr = array();
+while ($row = mysqli_fetch_assoc($query)) {
+    $arr[] = $row;
+}
 
 
 //for ($i=0;$i<$query->num_rows;$i++){
 //    $arr[] = mysqli_fetch_assoc($query);
 //}
 toast($arr);
+//释放查询操作
+mysqli_free_result($query);
+//断开connection连接
+mysqli_close($connection);
+
+
 
 //toast(mysqli_fetch_assoc($query));
 //toast(mysqli_fetch_assoc($query));
