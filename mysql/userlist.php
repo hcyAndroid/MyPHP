@@ -63,8 +63,8 @@ mysqli_close($conenction);
                 ?></td>
             <td><?php echo $value['birthday'] ?></td>
             <td><img src="<?php echo $value['avatar'] ?>" alt=""></td>
-            <td><a href="delete.php?id=<?php echo $value['id'] ?>" class="btn btn-danger"> 删除</a>
-                <a href="editer.php?id=<?php echo $value['id'] ?>" class="btn btn-primary"> 编辑</a></td>
+            <td><a href="delete.php?id=<?php echo $value['id'] ?>" class="btn btn-danger btn-sm"> 删除</a>
+                <a href="editer.php?id=<?php echo $value['id'] ?>" class="btn btn-primary btn-sm"> 编辑</a></td>
         </tr>
     <?php endforeach; ?>
 

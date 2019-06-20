@@ -1,147 +1,5 @@
 <?php
 
-function add()
-{
-//    include_once '../utils/LogUtils.php';
-//
-//    toast($_POST);
-//    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//
-//
-//        if (!isset($_POST['username'])) {
-//            $GLOBALS['error_message'] = '用户名必填';
-//            return;
-//        }
-//
-//        if (empty($_POST['username'])) {
-//            $GLOBALS['error_message'] = '用户名必填2';
-//            return;
-//        }
-//
-//
-//        if (!isset($_POST['sex'])) {
-//            $GLOBALS['error_message'] = '性别必填';
-//            return;
-//        }
-//
-//        if (empty($_POST['sex'])) {
-//            $GLOBALS['error_message'] = '性别必填2';
-//            return;
-//        }
-//
-//        if (!isset($_POST['birthday'])) {
-//            $GLOBALS['error_message'] = '生日必填';
-//            return;
-//        }
-//
-//        if (empty($_POST['birthday'])) {
-//            $GLOBALS['error_message'] = '生日必填2';
-//            return;
-//        }
-//
-//
-//       /* if (!isset($_POST['avatar'])) {
-//            $GLOBALS['error_message'] = '请上传头像';
-//            return;
-//        }
-//
-//        if (empty($_POST['avatar'])) {
-//            $GLOBALS['error_message'] = '请上传头像2';
-//            return;
-//        }*/
-//
-//
-//        $source = $_FILES['avatar'];
-//
-//        toast($source);
-//
-//        if ($source['size']<1*1024){
-//            $GLOBALS['error_message'] = '头像不能小于1K';
-//            return;
-//        }
-//
-//        if ($source['size']>3*1024*1024){
-//            $GLOBALS['error_message'] = '头像不能大于3M';
-//            return;
-//        }
-//
-//        $allowed_type_image = array('image/png','image/jpeg');
-//        if (!in_array($source['type'], $allowed_type_image)) {
-//            $GLOBALS['error_message']  = $source['name'] . '文件格式非法,只能上传图片';
-//            return;
-//        }
-//
-//        //打印另一个文件的扩展名
-//        toast(pathinfo($source['name'],PATHINFO_EXTENSION));
-//
-//        $imgPath='../file/'.uniqid() . '-' . $source['name'];
-//
-//        if (!move_uploaded_file( $source['tmp_name'],$imgPath)){
-//            $GLOBALS['error_message'] = '提交文件失败';
-//            return;
-//        }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//        $gender = $_POST[sex] == '1' ? '0' : '1';
-//
-//        $username = $_POST['username'];
-//
-//        $birthday = $_POST['birthday'];
-//
-//
-//        /*   $connection=mysqli_connect('127.0.0.1','root','12345678','stus');
-//
-//           if (!$connection){
-//               exit("数据库连接失败");
-//           }
-//
-//           //$sql='insert into users values(null,'.$_POST['username'].','.$gender.','.$_POST['birthday'].',null'.')';
-//
-//           $insert= mysqli_query($connection,"insert into users values(null,'$username','$gender','$birthday',null)");
-//
-//
-//           toast(mysqli_affected_rows($connection));*/
-//
-//
-//        //toast($sql);
-//
-//        $conenction = new mysqli('127.0.0.1', 'root', '12345678', 'stus');
-//
-//        if ($conenction->connect_error) {
-//            die("连接失败");
-//        }
-//        echo "连接成功";
-//
-//
-//        $str = "insert into users values (null,'$username','$gender','$birthday','$imgPath')";
-//
-//        if ($conenction->query($str) === TRUE) {
-//            echo "插入数据成功";
-//            header('Location:userlist.php');
-//        } else {
-//            echo $conenction->error;
-//        }
-//
-//
-//        $conenction->close();
-    //   }
-
-}
-
-function editor()
-{
-    //编辑用户数据
-
-
-}
 
 include_once '../utils/LogUtils.php';
 
@@ -164,6 +22,149 @@ if (!$query) {
 $objs = $query->fetch_object();
 
 toast($objs);
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    edit($objs, $id);
+}
+
+function edit($objs, $id)
+{
+    include_once '../utils/LogUtils.php';
+    toast($_POST);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+        if (!isset($_POST['username'])) {
+            $GLOBALS['error_message'] = '用户名必填';
+            return;
+        }
+
+        if (empty($_POST['username'])) {
+            $GLOBALS['error_message'] = '用户名必填2';
+            return;
+        }
+
+
+        if (!isset($_POST['sex'])) {
+            $GLOBALS['error_message'] = '性别必填';
+            return;
+        }
+
+        if (empty($_POST['sex'])) {
+            $GLOBALS['error_message'] = '性别必填2';
+            return;
+        }
+
+        if (!isset($_POST['birthday'])) {
+            $GLOBALS['error_message'] = '生日必填';
+            return;
+        }
+
+        if (empty($_POST['birthday'])) {
+            $GLOBALS['error_message'] = '生日必填2';
+            return;
+        }
+
+        //判定是否有上传头像
+        $source = $_FILES['avatar'];
+        if (isset($source) && $source['error'] === UPLOAD_ERR_OK) {
+            //用户修改了头像
+
+            toast($source);
+
+            if ($source['size'] < 1 * 1024) {
+                $GLOBALS['error_message'] = '头像不能小于1K';
+                return;
+            }
+
+            if ($source['size'] > 3 * 1024 * 1024) {
+                $GLOBALS['error_message'] = '头像不能大于3M';
+                return;
+            }
+
+            $allowed_type_image = array('image/png', 'image/jpeg');
+            if (!in_array($source['type'], $allowed_type_image)) {
+                $GLOBALS['error_message'] = $source['name'] . '文件格式非法,只能上传图片';
+                return;
+            }
+
+            //打印另一个文件的扩展名
+            toast(pathinfo($source['name'], PATHINFO_EXTENSION));
+
+            $imgPath = '../file/' . uniqid() . '-' . $source['name'];
+
+            if (!move_uploaded_file($source['tmp_name'], $imgPath)) {
+                $GLOBALS['error_message'] = '提交文件失败';
+                return;
+            }
+
+        } else {
+
+            $imgPath = $GLOBALS['objs']->avatar;
+        }
+
+
+        $objs->gender = $_POST[sex] == '1' ? '0' : '1';
+
+        $objs->name = $_POST['username'];
+
+        $objs->birthday = $_POST['birthday'];
+        $objs->avatar = $imgPath;
+
+        /*   $connection=mysqli_connect('127.0.0.1','root','12345678','stus');
+
+           if (!$connection){
+               exit("数据库连接失败");
+           }
+
+           //$sql='insert into users values(null,'.$_POST['username'].','.$gender.','.$_POST['birthday'].',null'.')';
+
+           $insert= mysqli_query($connection,"insert into users values(null,'$username','$gender','$birthday',null)");
+
+
+           toast(mysqli_affected_rows($connection));*/
+
+
+        //toast($sql);
+
+        $conenction = new mysqli('127.0.0.1', 'root', '12345678', 'stus');
+
+        if ($conenction->connect_error) {
+            die("连接失败");
+        }
+
+
+
+        $sql = "Update  users set name='{$objs->name}',gender='{$objs->gender}',birthday='{$objs->birthday}',avatar='{$objs->avatar}' where id={$id}";
+
+
+        $pupdate = $conenction->query($sql);
+
+
+
+        $affect=$conenction->affected_rows;
+
+
+        if ($affect>0){
+            echo "编辑成功";
+            header('Location:userlist.php');
+        }else{
+            echo "编辑失败";
+        }
+
+        $pupdate->free();
+
+        $conenction->close();
+
+        // $str = "insert into users values (null,'$username','$gender','$birthday','$imgPath')";
+        //toast($sql);
+
+    }
+
+}
+
+
 ?>
 
 
@@ -185,7 +186,8 @@ toast($objs);
     </div>
 <?php endif; ?>
 
-<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $objs->id ?>" method="post"
+      enctype="multipart/form-data">
     <table class="table-hover">
         <thead>
         <td>姓名</td>

@@ -57,6 +57,8 @@ json与js字面量的区别
 把json数据转对象的过程称为反序列化
 $arr = json_decode($content,true);//对象转关联数组
 
+json_encode();//将数据序列化的时候，必须要UTF-8编码
+
 
 4.doc+tab 快速在php页面生成html代码
 
