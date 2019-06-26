@@ -1,0 +1,32 @@
+1.AJAX
+<script>
+    //XMLHttpRequest
+    xhr = new XMLHttpRequest();
+    //先注册事件，这个事件不只是响应的时候触发，状态改变的时候的也触发
+    xhr.onreadystatechange = function () {
+        console.log(this.readyState);
+        if (xhr.readyState == 4) {
+            //等待响应，接受响应
+            console.log(this.responseText);//获取服务端响应的内容(响应体)
+        }
+    }
+    xhr.open('get', './test.php');
+    xhr.send();//发起请求
+
+
+</script>
+
+this.getAllResponseHeaders()//获取响应头的内容,返回的是字符串
+this.getResponseHeader('server')//获取响应头某个具体的内容
+
+
+
+httpRes.readyState
+
+0 初始化请求代理对象  xhr=new XMLHttpRequest();
+1 open方法已经调用，建立一个与服务端特定端口的链接。（架桥）
+2 已经接收到了响应报文的响应头(此时响应体接收不到)
+3 正在下载响应报文的响应体，有可能为null，也有可能不完整,不在这个状态处理响应体
+4 整个响应报文已经下载下来了
+
+

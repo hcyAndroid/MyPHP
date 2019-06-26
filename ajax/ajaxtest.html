@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX请求</title>
+</head>
+<body>
+
+<script>
+    xhr=new XMLHttpRequest();
+    console.log(xhr.readyState);
+
+
+
+    // xhr.onreadystatechange=function(){
+    //
+    //
+    // }
+
+
+    xhr.open('get','./test.php');
+    console.log(xhr.readyState);
+
+    xhr.send();
+    //console.log(xhr.readyState);
+
+
+    xhr.addEventListener('readystatechange',function () {
+        console.log(this.readyState);
+
+        switch (this.readyState) {
+            case 2:
+                console.log(this.getAllResponseHeaders());//获取响应头的内容
+                console.log(this.getResponseHeader('server'));
+             break
+            case 3:
+                break
+            case 4:
+                //接受响应成功
+                console.log(this.responseText);
+                break
+        }
+
+    });
+</script>
+
+</body>
+</html>
