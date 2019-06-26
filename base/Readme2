@@ -229,6 +229,71 @@ mysqli_close($connection);
 
 7.mysql 编码问题
 mysqli_set_charset($connection,'utf8');
+8.Cookie
+从响应报文的响应头里获取，从请求报文的请求头发出去
+
+//如果只传两个参数，不传第三个参数(cookie的过期时间),
+//默认cookie的过期时间是会话级别(浏览器的打开到关闭,关闭可浏览器就自动删除)
+//
+setcookie('name','hcy');
+setcookie('name');//直传键不传值，删除cookie,过期
+toast($_COOKIE);//返回的是关联数组
+
+设置cookie的过期时间
+
+//cookie取出来的数据都是字符串类型
+
+//设置cookie 一天后到期
+setcookie('name','hcy',time()+1*24*60*60);
+
+cookie的作用范围
+
+//path用于设置cookie的作用范围
+
+setcookie('name','hcy',time()+1*24*60*60,'/');
+//domain 用于设置cookie的域名范围
+
+cookie的问题
+
+9.session
+
+使用session
+session_start();//给当前用户找属于他的箱子，session_id 通过cookie的方式存到浏览器(客户端)
+//session是有类型的，取出来的数据不需要强制转换
+
+//存session
+$_SESSION['name']='hcy2019';
+//取消session
+unset($_SESSION['name']);
+//获取session
+vardump($_SESSION);
+
+
+session与cookie的区别
+
+1.cookie是核心,session是基于cookie的，是一种处理cookie的安全性而提出的一种技术手段
+2.cookie的值都是字符串，有时需要强制转换,session是有类型的，取出来的数据不需要强制转换
+3.cookie数据存于浏览器(客户端),session给当前用户找属于他的箱子，
+session_id 通过cookie的方式存到浏览器(客户端),而值存于服务器
+
+
+10.超全局变量
+
+   $GLOBALS  全局作用域可用的全部变量
+   $_SERVER  获取服务端相关信息
+   $_REQUEST 获取提交的相关参数
+   $_POST    获取post提交的相关参数
+   $_GET     获取get提交的相关参数
+   $_FILES   获取上传文件
+   $_ENV     操作环境变量
+   $_COOKIE  操作cookie
+   $_SESSION 操作session
+
+
+
+
+
+
 
 
 
