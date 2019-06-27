@@ -3,10 +3,15 @@
 
 if ($_SERVER['REQUEST_METHOD']=='GET'){
     include '../utils/LogUtils.php';
+    $id=(int)$_GET['id'];
 
-    $arr=array('name'=>'hcy','age'=>12,'sex'=>'男');
 
-    toast(json_encode($arr));
+    $sql = "select * from users where id={$id}";
+
+    toast($sql);
+    include_once '../utils/DbUtils.php';
+//
+    toast(getDataFromDb('stus',$sql));
 }
 
 //include '../utils/LogUtils.php';

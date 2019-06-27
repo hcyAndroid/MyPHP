@@ -12,8 +12,46 @@
     }
     xhr.open('get', './test.php');
     xhr.send();//发起请求
+</script>
 
 
+<script>
+    xhr=new XMLHttpRequest();
+    console.log(xhr.readyState);
+    xhr.open('get','./test.php');
+    console.log(xhr.readyState);
+    xhr.send();
+    //console.log(xhr.readyState);
+    xhr.addEventListener('readystatechange',function () {
+        console.log(this.readyState);
+
+        switch (this.readyState) {
+            case 2:
+                console.log(this.getAllResponseHeaders());//获取响应头的内容
+                console.log(this.getResponseHeader('server'));
+             break
+            case 3:
+                break
+            case 4:
+                //接受响应成功
+                console.log(this.responseText);
+                break
+        }
+
+    });
+</script>
+
+<script>
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('get', './test.php');
+
+    xhr.send(null);//传入请求体
+
+    //onload 事件就相当于readyState==4  html5新的api
+    xhr.onload = function () {
+        console.log(xhr.responseText);
+    }
 </script>
 
 this.getAllResponseHeaders()//获取响应头的内容,返回的是字符串
@@ -28,5 +66,76 @@ httpRes.readyState
 2 已经接收到了响应报文的响应头(此时响应体接收不到)
 3 正在下载响应报文的响应体，有可能为null，也有可能不完整,不在这个状态处理响应体
 4 整个响应报文已经下载下来了
+
+
+
+2.ajax 设置请求头
+
+如果的请求体是urlencoded格式，就必须设置请求头的content-type  为urlencoded格式,将它设为表单数据
+
+<script>
+    xhr=new XMLHttpRequest();
+
+    xhr.open('post','./testPost.php');//设置请求行
+
+   // text/plain;charset=UTF-8
+
+    //加入请求头'Content-Type','application/x-www-form-urlencoded'，使请求体是urlencoded格式
+    //这样服务端才能接受到数据
+
+    xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+    xhr.setRequestHeader('name','hcy2019');
+
+
+    xhr.send('age=12&address=广州');//设置请求体(post)
+
+
+    xhr.onload=function () {
+        //获取响应的状态码
+        console.log(xhr.status);
+        //获取响应的状态描述
+        console.log(xhr.statusText);
+        //获取响应体
+        console.log(xhr.responseText);
+        //获取响应的url
+        console.log(xhr.responseURL);
+
+    }
+</script>
+
+2.数据接口的概念
+
+
+get请求
+<script>
+
+    xhr=new XMLHttpRequest();
+
+
+    xhr.open('get','./test.php?id=9');//get传参
+
+    xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');//设置表单提交的形式
+
+    xhr.send();
+
+    xhr.onload=function () {
+        console.log(xhr.responseText);
+    }
+
+
+</script>
+
+3. 同步模式和异步模式
+
+open方法如果不传第三个参数，默认为true，也就是默认是异步模式,传入false就是同步
+
+同步模式send方法会出现阻塞情况
+
+
+
+
+
+
 
 

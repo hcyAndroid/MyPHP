@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax发送get请求并传递参数</title>
+</head>
+<body>
+
+<script>
+
+    xhr=new XMLHttpRequest();
+
+
+    // xhr.open('get','./test.php?id=9');//get传参
+    //
+    // xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');//设置表单提交的形式
+    //
+    // xhr.send();
+    //
+    // xhr.onload=function () {
+    //     console.log(xhr.responseText);
+    // }
+
+
+
+
+    xhr.open('get','./xml.php');//get传参
+
+    //xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');//设置表单提交的形式
+
+    xhr.send();
+
+    xhr.onload=function () {
+        console.log(xhr.responseText);
+    }
+
+
+</script>
+
+</body>
+</html>

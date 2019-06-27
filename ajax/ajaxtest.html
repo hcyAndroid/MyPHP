@@ -6,17 +6,9 @@
 </head>
 <body>
 
-<script>
+<!--<script>
     xhr=new XMLHttpRequest();
     console.log(xhr.readyState);
-
-
-
-    // xhr.onreadystatechange=function(){
-    //
-    //
-    // }
-
 
     xhr.open('get','./test.php');
     console.log(xhr.readyState);
@@ -42,6 +34,19 @@
         }
 
     });
+</script>-->
+
+
+<script>
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('get', './test.php');
+
+    xhr.send(null);//传入请求体
+
+    xhr.onload = function () {
+        console.log(xhr.responseText);
+    }
 </script>
 
 </body>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax测试post</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <td>用户名</td>
+        <td><input type="text" name="" id="username"></td>
+    </tr>
+    <tr>
+        <td>密码</td>
+        <td><input type="password" name="" id="password"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <button id="btn">登录</button>
+        </td>
+    </tr>
+</table>
+
+
+<script>
+
+
+    //按钮点击事件
+
+    console.time('myTime');//启动一个秒表
+
+    let btn = document.getElementById('btn');
+    var username = document.getElementById('username');
+    var password = document.getElementById('password');
+
+
+    btn.onclick = function () {
+        console.log('按钮点击事件' + username.value + "???" + password.value);
+        //获取界面的元素value
+        xhr = new XMLHttpRequest();
+        xhr.open('post', './testPost.php');
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        xhr.send(`username=${username.value}&password=${password.value}`);
+        console.timeEnd('myTime');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) {
+                return;
+            }
+            console.log(xhr.responseText);
+        }
+    }
+
+
+</script>
+
+</body>
+</html>
