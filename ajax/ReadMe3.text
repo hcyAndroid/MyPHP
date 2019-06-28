@@ -137,6 +137,9 @@ open方法如果不传第三个参数，默认为true，也就是默认是异步
 
 this.responseText 永远获取的是字符串形式的响应体
 this.response   获得的结果会根据responseType的变化而变化
+6.ajax的封装
+
+
 
 
 

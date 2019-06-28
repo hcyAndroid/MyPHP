@@ -35,7 +35,7 @@ function ajax(method, url, params) {
  * @param callBack 回调函数
  */
 
-function ajaxRequest2(method, url, params,callBack) {
+function ajaxRequest2(method, url, params, callBack) {
     method = method.toUpperCase();
     var xhr = new XMLHttpRequest();
     if (typeof params === 'object') {
@@ -62,10 +62,49 @@ function ajaxRequest2(method, url, params,callBack) {
         if (this.readyState !== 4) {
             return;
         }
-        if (callBack!=null){
+        if (callBack != null) {
             callBack(this.responseText);
-        }else {
+        } else {
             console.log('没注册回调函数')
         }
     }
 }
+
+
+//回调黑洞的处理
+function ajaxRequest3(method, url, params, callBack) {
+    method = method.toUpperCase();
+    var xhr = new XMLHttpRequest();
+    if (typeof params === 'object') {
+        var paramsArr = [];
+        for (var key in params) {
+            var value = params[key];
+            paramsArr.push(key + '=' + value);
+        }
+        params = paramsArr.join('&');
+    }
+    if (method === 'POST') {
+        //设置请求头
+        xhr.open(method, url);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        params = params || null;
+    } else {
+        url = url + '?' + params;
+        params = null;
+        xhr.open(method, url);
+    }
+    console.log('请求体:' + params);
+    xhr.send(params);
+    xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) {
+            return;
+        }
+        if (callBack != null) {
+            callBack(this.responseText);
+        } else {
+            console.log('没注册回调函数')
+        }
+    }
+}
+
+
