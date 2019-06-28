@@ -5,10 +5,10 @@
     <title>ajax发送get请求并传递参数</title>
 </head>
 <body>
-
+<table id="tb" border="1"></table>
 <script>
 
-    xhr=new XMLHttpRequest();
+    xhr = new XMLHttpRequest();
 
 
     // xhr.open('get','./test.php?id=9');//get传参
@@ -22,19 +22,38 @@
     // }
 
 
-
-
-    xhr.open('get','./xml.php');//get传参
+    xhr.open('get', './xml.php');//get传参
 
     //xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');//设置表单提交的形式
 
     xhr.send();
 
-    xhr.onload=function () {
-        console.log(xhr.responseText);
+    var tb = document.getElementById('tb');
+
+    xhr.onload = function () {
+
+        var arrs = JSON.parse(xhr.responseText);
+
+        console.log(arrs);
+        for (let i = 0; i < arrs.length; i++) {
+            var obj = arrs[i];
+            //先创建行，在创建列
+            var tr = document.createElement('tr');
+
+            var keys= Object.keys(obj);
+
+            console.log(Object.getOwnPropertyNames(obj).length);
+            for (let j = 0; j < keys.length; j++) {
+                var td = document.createElement('td');
+                td.innerText=obj[keys[j]];
+                tr.appendChild(td);
+            }
+
+            tb.appendChild(tr);
+
+        }
+
     }
-
-
 </script>
 
 </body>

@@ -1,5 +1,6 @@
 <?php
 //TODO:接受请求返回数据
+header("Content-Type:application/json");
 
 if ($_SERVER['REQUEST_METHOD']=='GET'){
     include '../utils/LogUtils.php';
@@ -8,10 +9,12 @@ if ($_SERVER['REQUEST_METHOD']=='GET'){
 
     $sql = "select * from users where id={$id}";
 
-    toast($sql);
+   // toast($sql);
     include_once '../utils/DbUtils.php';
 //
-    toast(getDataFromDb('stus',$sql));
+    //toast(getDataFromDb('stus',$sql));
+
+  echo  getDataFromDb('stus',$sql);
 }
 
 //include '../utils/LogUtils.php';

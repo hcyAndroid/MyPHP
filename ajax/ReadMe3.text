@@ -64,7 +64,7 @@ httpRes.readyState
 0 初始化请求代理对象  xhr=new XMLHttpRequest();
 1 open方法已经调用，建立一个与服务端特定端口的链接。（架桥）
 2 已经接收到了响应报文的响应头(此时响应体接收不到)
-3 正在下载响应报文的响应体，有可能为null，也有可能不完整,不在这个状态处理响应体
+3 正在下载响应报文的响应体，有可能为null，也有可能不完整,不要在这个状态处理响应体
 4 整个响应报文已经下载下来了
 
 
@@ -131,6 +131,13 @@ get请求
 open方法如果不传第三个参数，默认为true，也就是默认是异步模式,传入false就是同步
 
 同步模式send方法会出现阻塞情况
+
+4.模板引擎
+5.responseText与response的区别
+
+this.responseText 永远获取的是字符串形式的响应体
+this.response   获得的结果会根据responseType的变化而变化
+
 
 
 

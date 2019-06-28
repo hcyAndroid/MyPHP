@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax 用模板动态渲染table</title>
+
+
+</head>
+<body>
+//引入模板引擎
+
+<table id="tb" border="1"></table>
+
+<script id="tem_table" type="text/x-art-template">
+    {{each mydata}}
+    <tr>
+        {{each $value}}
+        <td>{{$value}}</td>
+        {{/each}}
+    </tr>
+    {{/each}}
+</script>
+<script src="../template/template-web.js">
+
+</script>
+<script>
+    xhr = new XMLHttpRequest();
+    xhr.open('get', './xml.php');//get传参
+    xhr.send(null);
+    xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) {
+            return;
+        }
+
+
+        console.log(JSON.parse(this.responseText));
+        var result = {mydata: JSON.parse(this.responseText)};
+
+        var html = template('tem_table', result);
+
+
+        document.getElementById('tb').innerHTML = html;
+        // console.log();
+
+    }
+
+
+</script>
+
+
+</body>
+</html>

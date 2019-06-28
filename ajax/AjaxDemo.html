@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX回顾</title>
+    <script src="../utils/AjaxUtils.js"></script>
+</head>
+<body>
+
+<script>
+    ajax('get','./test.php','id=9',function () {
+
+    });
+   /* xhr = new XMLHttpRequest();
+
+    xhr.open('get', './test.php?id=9');//请求行:请求方法 请求路径  http版本
+
+    xhr.send();//请求体
+    //通知代理的对象，服务端响应给客户端的数据时json格式,此时response返回的直接是json对象
+    xhr.responseType='json';
+    xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) {
+            return;
+        }
+
+        console.log(this.response[0].name);
+    }
+*/
+
+</script>
+
+</body>
+</html>
