@@ -270,6 +270,95 @@ post请求
         }
     });
 10.ajax的全局处理
+<script>
+    //jquery全局事件处理函数
+    $(document).ajaxStart(function () {
+        console.log('在AJAX 请求刚开始时执行一个处理函数');
+        $('.loading').fadeIn();
+    }).ajaxStop(function () {
+        console.log('在AJAX 请求完成时执行一个处理函数');
+        $('.loading').fadeOut();
+    });
+
+    $.ajax({
+        url: "./xml.php",
+        type: 'post',
+        data: {
+            id: '9'
+        }
+    });
+</script>
+
+11.同源策略:不同源地址之间默认不能发送ajax请求
+域名，协议，端口  完全相同=>同源
+同源的地址之间才可以发送ajax请求
+
+12.跨域访问 jsonP
+Access-Control-Allow-Origin
+
+<script>
+    //能发出去，服务器能响应，无法拿到响应结果
+    var img = new Image();
+    img.src = 'http://www.baidu.com';
+</script>
+
+<script>
+    //能发出去，服务器能响应，无法拿到响应结果
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+
+    link.href = 'http://www.baidu.com';
+
+    document.body.appendChild(link);
+
+</script>
+
+<script>
+    //能发出去，服务器能响应，无法拿到响应结果
+    var script = document.createElement('script');
+
+    script.src = 'http://www.baidu.com';
+
+    document.body.appendChild(script);
+
+
+    function callBack(res){
+
+
+    }
+
+</script>
+
+//重要的是服务端必须返回js，服务端必须返回的是js脚本
+//客户端先定义好一个回调的js函数，服务端返回这个函数的执行的js代码
+
+jquery  jsonP的封装
+为每一个请求创建唯一的函数
+var function_name='jsonp_'+Date.now()+Math.random().toString().substr(2);
+window[function_name]=function (data){
+
+
+}
+
+
+<script>
+    $.ajax({
+        url:'http://www.baidu.com',
+        dataType:'jsonp',
+        success:function (res) {
+            console.log(res);
+        }
+    })
+</script>
+
+
+13.CORS  跨资源共享
+
+在服务端添加请求头
+header('Access-Control-Allow-Origin:*');
+
+
+
 
 
 

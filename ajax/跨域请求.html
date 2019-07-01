@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域请求</title>
+
+    <script src="../jquery/jquery-1.12.4.js"></script>
+
+</head>
+<body>
+
+<script>
+    //能发出去，服务器能响应，无法拿到响应结果
+    // var script = document.createElement('script');
+    //
+    // script.src = 'http://www.baidu.com';
+    //
+    // document.body.appendChild(script);
+
+</script>
+
+<script>
+    $.ajax({
+        url:'http://www.baidu.com',
+        dataType:'jsonp',
+        success:function (res) {
+            console.log(res);
+        }
+    })
+</script>
+
+
+</body>
+</html>

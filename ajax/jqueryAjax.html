@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <title>jquery中的ajax请求</title>
     <script src="../jquery/jquery-1.12.4.js"></script>
+    <script src="../js/nprogress.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/nprogress.css">
 </head>
 <body>
+
+<!--<div class="loading alert-danger">-->
+<!--    ddddddd-->
+<!--</div>-->
 
 <script>
     // $.ajax({
@@ -46,14 +53,42 @@
     // });
 
 
-    $.post({
-        url:'./xml.php',
-        dataType:'json',
-        data:{id:'9'},
+    // $.post({
+    //     url:'./xml.php',
+    //     dataType:'json',
+    //     data:{id:'9'},
+    //     success:function (res) {
+    //        console.log(res);
+    //     }
+    // });
+</script>
+
+
+<script>
+    //jquery全局事件处理函数
+
+
+    $(document).ajaxStart(function () {
+        console.log('在AJAX 请求刚开始时执行一个处理函数');
+        NProgress.start();
+    }).ajaxStop(function () {
+        console.log('在AJAX 请求完成时执行一个处理函数');
+        NProgress.done();
+    });
+
+    $.ajax({
+        url: "http://www.baidu.com",
+        type: 'get',
         success:function (res) {
-           console.log(res);
+            console.log('请求成功')
+            console.log(res)
+        },
+        error:function (xhr) {
+            console.log('请求失败')
+            console.log(xhr,xhr.status)
         }
     });
+
 </script>
 
 </body>

@@ -1,5 +1,7 @@
 <?php
-//header('Content-Type:application/json');
+header('Content-Type:application/json');
+
+header('Access-Control-Allow-Origin:*');
 
 $data = array(array('name' => 'hcy1', 'age' => 13, 'sex' => '男','address'=>'xixi','hobby'=>'打篮球'),
     array('name' => 'hcy2', 'age' => 133, 'sex' => '男','address'=>'xixi','hobby'=>'打篮球'),
