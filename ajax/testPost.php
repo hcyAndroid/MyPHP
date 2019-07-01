@@ -8,7 +8,7 @@ include_once '../utils/LogUtils.php';
 //
 //}
 
-toast($_POST);
+toast(1);
 
 
 

@@ -138,7 +138,138 @@ open方法如果不传第三个参数，默认为true，也就是默认是异步
 this.responseText 永远获取的是字符串形式的响应体
 this.response   获得的结果会根据responseType的变化而变化
 6.ajax的封装
+/**
+ *
+ * @param method  get/post  可大写 可小写
+ * @param url     请求路径
+ * @param params  传对象/'id=1&age=10'
+ * @param callBack 回调函数
+ */
 
+function ajaxRequest2(method, url, params, callBack) {
+    method = method.toUpperCase();
+    var xhr = new XMLHttpRequest();
+    if (typeof params === 'object') {
+        var paramsArr = [];
+        for (var key in params) {
+            var value = params[key];
+            paramsArr.push(key + '=' + value);
+        }
+        params = paramsArr.join('&');
+    }
+    if (method === 'POST') {
+        //设置请求头
+        xhr.open(method, url);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        params = params || null;
+    } else {
+        url = url + '?' + params;
+        params = null;
+        xhr.open(method, url);
+    }
+    console.log('请求体:' + params);
+    xhr.send(params);
+    xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) {
+            return;
+        }
+        if (callBack != null) {
+            callBack(this.responseText);
+        } else {
+            console.log('没注册回调函数')
+        }
+    }
+}
+
+7.jquery的ajax
+
+get请求
+<script>
+    $.ajax({
+        url: './test.php?id=9',
+        type: 'get',//method 请求方式
+        success: function (res) {//请求成功的回调函数
+            console.log(res);
+        }
+    })
+</script>
+
+
+<script>
+    $.ajax({
+        url: './test.php',
+        data:{id:'9'},
+        type: 'get',//method 请求方式
+        success: function (res) {//请求成功的回调函数
+            console.log(res);
+        }
+    })
+</script>
+
+
+post请求
+<script>
+    $.ajax({
+        url: './test.php',
+        data:{id:'9'},
+        type: 'post',//method 请求方式
+        success: function (res) {//请求成功的回调函数
+            console.log(res);
+        }
+    })
+</script>
+
+
+//服务端不指定响应头,可以通过设置dataType来确定响应的数据格式
+<script>
+    $.ajax({
+        url: './xml.php',
+        data:{id:'9'},
+        dataType:'json',//设置响应体的类型
+        type: 'post',//method 请求方式
+        success: function (res) {//请求成功的回调函数
+            //res会根据响应头自动转换成字符串/对象
+            console.log(res);
+        }
+    })
+</script>
+
+8.jquery的ajax回调
+    $.ajax({
+        url: './xml2.php',
+        type: 'post',
+        data: {id: '9'},
+        dataType: 'json',
+        beforeSend: function (xhr) {
+            //readstate=0
+            console.log('发送之前',xhr);//状态码==200才会触发这个函数
+
+        },
+        success: function (res) {
+            //readstate=4
+            console.log('成功' , res);//状态码==200才会触发这个函数
+        },
+        error: function (xhr) {
+            //readstate=4
+            console.log('失败' , xhr);
+        },
+        complete: function (xhr) {
+            //失败与成功的共同代码
+            //readstate=4
+            console.log('完成' , xhr);
+        }
+    });
+
+9.快捷代码
+    $.post({
+        url:'./xml.php',
+        dataType:'json',
+        data:{id:'9'},
+        success:function (res) {
+           console.log(res);
+        }
+    });
+10.ajax的全局处理
 
 
 

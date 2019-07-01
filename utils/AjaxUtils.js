@@ -1,3 +1,7 @@
+import '../jquery/jquery-1.12.4';//导入jquery
+
+
+
 /**
  *
  * @param method

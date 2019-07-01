@@ -2,9 +2,9 @@
 //TODO:接受请求返回数据
 header("Content-Type:application/json");
 
-if ($_SERVER['REQUEST_METHOD']=='GET'){
+if ($_SERVER['REQUEST_METHOD']=='POST'){
     include '../utils/LogUtils.php';
-    $id=(int)$_GET['id'];
+    $id=(int)$_POST['id'];
 
 
     $sql = "select * from users where id={$id}";

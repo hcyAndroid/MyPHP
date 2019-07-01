@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>局部刷新</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../jquery/jquery-1.12.4.js"></script>
+</head>
+<body>
+<h1>会员中心</h1>
+<hr>
+<div class="row">
+    <aside class="col-md-3">
+        <div class="list-group">
+
+            <a class="list-group-item list-group-item-action" href="one.html">我的资料</a>
+            <a class="list-group-item list-group-item-action" href="two.html">我的购物车</a>
+            <a class="list-group-item list-group-item-action" href="three.html">我的订单</a>
+
+
+
+        </div>
+
+    </aside>
+
+    <main class="col-md-9" id="main">
+        <h2>我的购物车</h2>
+        <hr>
+    </main>
+</div>
+
+<script>
+    // $(function ($) {
+    //     //入口函数:提供一个独立的作用域和确保页面已经加载完成
+    //     $('.list-group-item').on('click',function () {
+    //         //注册点击事件
+    //         //$('#main').onload();
+    //         var url=$(this).attr('href');
+    //         console.log('跳转的路径:'+url);
+    //         $('#main').load(url+' main')
+    //
+    //
+    //         return  false;
+    //     })
+    //
+    // });
+</script>
+
+
+
+</body>
+</html>
