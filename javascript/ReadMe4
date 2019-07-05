@@ -1,0 +1,35 @@
+1.js变量
+true  1
+false  0
+
+
+原始数据类型:number string boolean undefined  null
+
+
+声明变量没有赋值  undefined
+变量赋值为null  结果为null
+2.对象
+遍历对象
+        var  json={
+            "name":"hcy",
+            "age":"12"
+        };
+
+        //console.log(json.address);//对象.某个属性，如果没赋值，属性不会创建
+        //console.log(json);
+        //console.log(json["name","age"]);
+        //遍历对象的属性
+        for(var key in json){
+            console.log(key,json[key]);
+        }
+
+3.string number boolean  这三个类型是基本数据类型也是基本包装类型
+4.js的三个部分
+ECMAScript：标准语法
+dom:文档对象模型
+bom:浏览器对象模型
+
+
+
+
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字面量和变量</title>
+    <script type="text/javascript">
+        // var a=parseInt('10.98');
+        //
+        // console.log( a);
+        //空数组
+        var arr1 = [[1, 2, 3], 'hcy'];
+
+        var arr = new Array(5, 6, 7, 8, 9);
+
+
+        function f(a, b) {
+            return 1;
+        }
+
+        console.log(f);
+
+
+        // var obj = new Object();
+        // obj.name = 'hcy2019';
+        //
+        // console.log(obj.name);
+
+
+        // function Person(name) {
+        //     var sex='hh';
+        //     this.name = name;
+        //     this.getName = function () {
+        //         return this.name;
+        //     }
+        //     this.setName = function (name) {
+        //         this.name = name;
+        //     }
+        // }
+        //
+        // var person = new Person('hcy2019');
+        // person.setName('hcy2020');
+        //
+        // console.log(typeof Person);
+        // console.log(typeof person);
+        // console.log(person.name)
+
+
+        var  json={
+            "name":"hcy",
+            "age":"12"
+        };
+
+        //console.log(json.address);//对象.某个属性，如果没赋值，属性不会创建
+        //console.log(json);
+        //console.log(json["name","age"]);
+        //遍历对象的属性
+        for(var key in json){
+            console.log(key,json[key]);
+        }
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
