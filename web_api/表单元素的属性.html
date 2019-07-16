@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单元素的属性</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+
+<input type="text" id="text">
+<input type="text"><input type="text"><input type="text"><input type="text"><input type="text"><input type="text"><input
+        type="text"><input type="text"><input type="text"><input type="text">
+
+
+<br>
+
+
+<button id="btn" class="btn-primary">
+    禁用
+</button>
+
+<script>
+   var arr= document.getElementsByTagName('input')
+   var  arr1=[];
+   for (let i = 0; i < arr.length; i++) {
+       arr[i].value=i;
+       arr1.push(i);
+   }
+
+   console.log(arr1.join('|'));
+
+
+</script>
+
+
+<script>
+    console.log(arr);
+    var btn = document.getElementById('btn');
+
+    btn.onclick = function () {
+        var text = document.getElementById('text');
+        if (!text.disabled){
+          btn.innerText='启用';
+        }else {
+            btn.innerText='禁用';
+        }
+        text.disabled = !text.disabled;
+        console.log(text.disabled)
+        console.log(text.type)
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取div里的内容</title>
+</head>
+<body>
+<div><p>我是一个人</p></div>
+
+<script>
+    var  div=document.getElementsByTagName('div')[0];
+
+    div.innerHTML='<b>6666</b>';
+
+     console.log(div.innerHTML,div.innerHTML.length);
+
+     console.log(div.innerText,div.innerText.length);
+
+     console.log(div.textContent,div.textContent.length);
+     
+     
+     function getTextFromElement() {
+         
+     }
+</script>
+</body>
+</html>

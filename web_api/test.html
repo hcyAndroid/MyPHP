@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    <!--    <script>-->
+    <!--        var divs=document.getElementsByTagName("divs");//伪数组-->
+    <!--        console.log(divs.divs);-->
+    <!--    </script>-->
+
+</head>
+<body>
+
+<div id="first" class="dd">
+    <div id="first_inner"></div>
+    <div class="dd"></div>
+</div>
+
+
+<script>
+   var div= document.querySelectorAll("#first")[0];
+   console.log(div);
+</script>
+
+
+<!--<script>-->
+<!--    var  div= document.querySelector("#first>.dd")-->
+<!--    console.log(div);-->
+<!--</script>-->
+
+
+
+
+<div></div>
+<div></div>
+<script>
+    /*    var div_first = document.getElementById("first");
+        console.log(div_first);
+        //console.dir(div_first);
+        console.log(typeof div_first)*/
+
+    // var divs=document.getElementsByTagName("div");//伪数组
+    // console.log(divs.length);
+    // for (var i = 0; i < divs.length; i++) {
+    //     console.log(divs[i])
+    // }
+    //console.log(arry);
+</script>
+
+<!--<script>-->
+
+<!--  /*  var div_first = document.getElementById("first");-->
+<!--    var div_first_inner = div_first.getElementsByTagName("div")[0];-->
+<!--    console.log(div_first_inner);*/-->
+
+<!--  var arr=document.getElementsByClassName("dd");-->
+<!--  console.log(arr);-->
+<!--</script>-->
+</body>
+</html>

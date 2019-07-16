@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相册</title>
+    <style type="text/css">
+        body {
+            font-family: "Helvetica", "Arial", self;
+            color: #333; /*只body里的字体*/
+            background: #ccc;
+            margin: 1em 10%;
+        }
+
+        h2 {
+            color: #333;
+            background-color: transparent;
+        }
+
+        a {
+            color: #c60;
+            background-color: transparent;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0px 20px 20px 0px;
+            padding: 0px;
+            display: inline;
+        }
+
+        a img {
+            border: 0px;
+        }
+
+
+    </style>
+</head>
+<body>
+<h2>相册</h2>
+<div>
+    <a href="">
+        <img src="" alt="">
+    </a>
+    <a href="">
+        <img src="" alt="">
+    </a>
+    <a href="">
+        <img src="" alt="">
+    </a>
+    <a href="">
+        <img src="" alt="">
+    </a>
+</div>
+<img id="show" src="" alt="" width="450">
+<p id="text">选择一张图</p>
+
+<script>
+    //ajax获取数据
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', './photo.php');
+    //通知代理的对象，服务端响应给客户端的数据时json格式,此时response返回的直接是json对象
+    xhr.responseType = 'json';
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState != 4) {
+            return;
+        }
+        handle_arr(xhr.response);
+
+        //console.log(xhr.response[0].name);
+    }
+
+
+    function handle_arr(arr) {
+        var arr_a_img = document.querySelectorAll('a img');
+        var arr_a = document.getElementsByTagName('a');
+        var p=document.getElementById('text');
+        var show=document.getElementById('show');
+        for (let i = 0; i < arr_a_img.length; i++) {
+            arr_a_img[i].src = arr[i].src;
+            arr_a_img[i].alt = arr[i].name;
+            arr_a_img[i].title = arr[i].name;
+            arr_a[i].onclick=function () {
+                p.innerText=arr[i].name;
+                console.log(arr[i].name);
+                show.src=arr[i].pic;
+                return false;//取消a的默认行为
+            }
+        }
+    }
+</script>
+</body>
+</html>
