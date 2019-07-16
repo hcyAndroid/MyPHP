@@ -12,7 +12,7 @@ function getInnerText(element) {
 }
 
 /**
- * 获取【0，max)的随机整数
+ * 获取[0,max)的随机整数
  * @param max
  */
 function getRandomInt(max) {
