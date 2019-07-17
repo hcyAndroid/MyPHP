@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义属性</title>
+</head>
+<body>
+<div id="555" persionid="dd"></div>
+<script>
+    var  div=document.getElementById("555");
+    console.log(div.persionid);//获取不到的
+    console.log(div.getAttribute("persionid"));
+</script>
+
+<script>
+    div.tag='777';//设置不了
+    div.setAttribute('tag','666');
+    div.setAttribute('id','999');
+    div.removeAttribute('id');
+</script>
+</body>
+</html>

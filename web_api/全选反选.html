@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选反选</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../template/template-web.js"></script>
+</head>
+<body>
+<table class="table-dark table-primary" width="800" border="1px">
+    <thead>
+    <tr>
+        <td>
+            <input id="quanxuan" type="checkbox">
+        </td>
+        <td>名称</td>
+        <td>图片</td>
+    </tr>
+    </thead>
+    <tbody id="tbs">
+
+    </tbody>
+</table>
+
+
+<button id="fanxuan">反选</button>
+
+<script id="tbodys" type="text/x-art-template">
+    {{each mydata}}
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>{{mydata[$index].name}}</td>
+        <td><img src="{{mydata[$index].src}}" alt=""></td>
+
+        <!--{{each $value}}
+        {{if $index=='src'}}
+        <td><input type="checkbox"></td>
+        {{/if}}
+        <td>{{$value}}
+
+        </td>
+        {{/each}}-->
+    </tr>
+    {{/each}}
+</script>
+
+<script>
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', 'photo.php');
+    xhr.send();
+    xhr.responseType = 'json';
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState != 4) {
+            return;
+        }
+        var arry = this.response;
+        console.log(arry);
+        var html = template('tbodys', {'mydata': arry});
+        var tbs = document.getElementById('tbs');
+        tbs.innerHTML = html;
+        var quanxuan = document.getElementById("quanxuan");
+        var array = tbs.getElementsByTagName('input');
+        console.log(array.length);
+        quanxuan.onclick = function () {
+            console.log(quanxuan.checked, array.length)
+
+            for (let i = 0; i < array.length; i++) {
+                if (array[i].id !== 'quanxuan') {
+                    array[i].checked = quanxuan.checked;
+                }
+
+            }
+        }
+
+
+        for (let i = 0; i < array.length; i++) {
+            array[i].onclick = function () {
+                for (let j = 0; j < array.length; j++) {
+                    if (!array[j].checked) {
+                        quanxuan.checked = false;
+                        return;
+                    }
+                }
+                quanxuan.checked = true;
+                // console.log(this.checked,array.length);
+                // if (!this.checked){
+                //     quanxuan.checked= false;
+                //
+                // }
+            }
+        }
+
+        //实现反选功能
+        var fanxuan = document.getElementById("fanxuan");
+        fanxuan.onclick = function () {
+            var  isAllChoose=true;
+            for (let i = 0; i < array.length; i++) {
+                array[i].checked=!array[i].checked;
+                if (!array[i].checked){
+                    isAllChoose=false;
+                }
+            }
+            quanxuan.checked=isAllChoose;
+        }
+
+    }
+
+
+</script>
+
+</body>
+</html>
