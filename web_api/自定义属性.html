@@ -5,7 +5,11 @@
     <title>自定义属性</title>
 </head>
 <body>
-<div id="555" persionid="dd"></div>
+<div id="555" persionid="dd">
+    <p>666</p>
+    <span>ddd</span>
+    <!--666-->
+</div>
 <script>
     var  div=document.getElementById("555");
     console.log(div.persionid);//获取不到的
@@ -18,5 +22,19 @@
     div.setAttribute('id','999');
     div.removeAttribute('id');
 </script>
+
+
+<script>
+    //获取子节点
+    console.log(div.firstChild);
+    console.log(div.firstElementChild)
+    console.log(div.hasChildNodes());
+    console.log(typeof  div.childNodes);//子节点
+    console.dir(div.childNodes);
+    console.log(typeof  div.children);//子元素
+    console.dir(div.children);
+
+</script>
+
 </body>
 </html>

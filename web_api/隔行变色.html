@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色</title>
+</head>
+<body>
+<ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+
+<script>
+
+
+
+
+
+
+    var ul = document.getElementById("ul");
+
+    var arr = ul.children;//获得所有的子元素
+    for (let i = 0; i < arr.length; i++) {
+        if (i%2==0){
+            //奇数行
+            arr[i].style.backgroundColor='#f00';
+        }else {
+            arr[i].style.backgroundColor='#0f0';
+        }
+    }
+</script>
+
+
+<script>
+    console.log(ul.firstChild)
+    console.log(ul.lastChild)
+
+
+    var li_first= ul.firstElementChild;
+
+    li_first.innerText=100;
+</script>
+
+
+</body>
+</html>
