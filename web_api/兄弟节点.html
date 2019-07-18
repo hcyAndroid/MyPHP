@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>兄弟节点</title>
+    <script src="../utils/JSUtils.js"></script>
+    <script src="../jquery/jquery-1.12.4.js"></script>
+    <script src="../utils/test.js"></script>
+
+</head>
+<body>
+<div>
+    <div>1</div>
+    <div>2</div>
+    <div id="three">3
+    <p>999</p>
+    </div>
+    <div>4</div>
+    <div>5</div>
+</div>
+
+<script >
+
+    $(function () {
+        var three=document.getElementById('three');
+        //
+        // var tag=three.nextSibling;
+        // var tag_=three.nextElementSibling;
+        // var lst=three.previousSibling;
+        // var lst_=three.previousElementSibling;
+        //
+        // console.dir(tag);
+        // console.dir(tag_.innerText);
+        // console.dir(lst);
+        // console.dir(lst_.innerText);
+        console.dir(getNextElementSibling(three));
+        console.dir(getPreviousElementSibling(three));
+        //console.log(getPreviousElementSibling(three));
+    });
+
+
+</script>
+
+</body>
+</html>

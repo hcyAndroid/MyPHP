@@ -1,4 +1,53 @@
 /**
+ * 获取上一个兄弟元素
+ * @param element
+ * @returns {Node | (() => (Node | null)) | ActiveX.IXMLDOMNode|null}
+ */
+
+function getPreviousElementSibling(element) {
+    let el=element;
+    while (el=el.previousSibling){
+        if (el.nodeType===1){
+            return el;
+        }
+    }
+
+    return null;
+
+}
+
+
+/**
+ * 获取下一个兄弟元素
+ * @param element
+ * @returns {ChildNode | (() => (Node | null)) | ActiveX.IXMLDOMNode | Node|null}
+ */
+function getNextElementSibling(element) {
+    let el=element;
+    while (el=el.nextSibling){
+        if (el.nodeType===1){
+            return el;
+        }
+    }
+
+    return null;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
  * 获取标签内容的兼容方法
  * @param element
  */
