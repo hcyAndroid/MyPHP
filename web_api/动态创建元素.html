@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态创建元素</title>
+    <style type="text/css">
+        .myli{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+<div id="tag">
+<span >777</span>
+</div>
+
+<script>
+    //在内存中创建一个dom对象
+    var p=document.createElement("p");
+    p.innerText=999;
+    var div=document.getElementById("tag");
+    //div.appendChild(p);
+    div.replaceChild(p,div.children[0]);
+
+</script>
+
+
+
+
+<!--<script>
+    var div=document.getElementById("tag");
+    //document.getElementById("tag").innerHTML="666";
+    //document.write("Name<p>hcy</p>");
+    var  xhr=new XMLHttpRequest();
+    xhr.open('get','./photo.php');
+    xhr.send();
+    xhr.responseType='json';
+    xhr.onreadystatechange=function () {
+        if (this.readyState!=4){
+            return;
+        }
+        var array=this.response;
+        console.log(array);
+        var html=[];
+        html.push('<ul>');
+        for (let i = 0; i < array.length; i++) {
+            html.push("<li class=\"myli\">");
+            html.push(array[i].name);
+
+            html.push('</li>');
+        }
+        html.push('</ul>');
+        div.innerHTML=html.join('');
+
+
+
+    }
+
+
+
+</script>-->
+</body>
+</html>

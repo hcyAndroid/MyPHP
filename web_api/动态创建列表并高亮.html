@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态创建列表并高亮</title>
+    <style>
+        .over{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">生成数据</button>
+
+<div id="box">
+
+</div>
+
+
+<script>
+    var btn=document.getElementById('btn');
+    var box=document.getElementById('box');
+    btn.onclick=function () {
+
+
+        var xhr=new XMLHttpRequest();
+        xhr.open('get','./photo.php');
+        xhr.send();
+        xhr.responseType='json';
+        xhr.onreadystatechange=function () {
+            if (xhr.readyState!==4){
+                return;
+            }
+            var arr=xhr.response;
+            var ul= document.createElement('ul');
+            box.appendChild(ul);
+            for (let i = 0; i < arr.length; i++) {
+                let li=document.createElement('li');
+                li.onmouseover=function(){
+                    li.className='over';
+                }
+
+                li.onmouseout=function(){
+                    li.removeAttribute('class')
+                }
+                li.on
+                li.innerText=arr[i].name;
+                ul.appendChild(li);
+            }
+
+
+        }
+    }
+</script>
+
+
+</body>
+</html>

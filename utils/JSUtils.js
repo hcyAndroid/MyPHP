@@ -5,9 +5,9 @@
  */
 
 function getPreviousElementSibling(element) {
-    let el=element;
-    while (el=el.previousSibling){
-        if (el.nodeType===1){
+    let el = element;
+    while (el = el.previousSibling) {
+        if (el.nodeType === 1) {
             return el;
         }
     }
@@ -23,28 +23,15 @@ function getPreviousElementSibling(element) {
  * @returns {ChildNode | (() => (Node | null)) | ActiveX.IXMLDOMNode | Node|null}
  */
 function getNextElementSibling(element) {
-    let el=element;
-    while (el=el.nextSibling){
-        if (el.nodeType===1){
+    let el = element;
+    while (el = el.nextSibling) {
+        if (el.nodeType === 1) {
             return el;
         }
     }
 
     return null;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**
@@ -57,6 +44,19 @@ function getInnerText(element) {
         return element.innerText;
     } else {
         return element.textContent;
+    }
+}
+
+/**
+ * 设置标签内容的兼容方法
+ * @param element
+ * @param value
+ */
+function setInnerText(element, value) {
+    if (typeof element.innerText === 'string') {
+        element.innerText = value;
+    } else {
+       element.textContent =value;
     }
 }
 
@@ -74,12 +74,12 @@ function getRandomInt(max) {
  * @returns {ChildNode | *|Element}
  */
 function getFirstElement(element) {
-    if (element.firstElementChild){
+    if (element.firstElementChild) {
         return element.firstElementChild;
-    }else {
-        var arr=element.childNodes;
-        for (let i = 0; i <arr .length; i++) {
-            if (arr[i].nodeType===1){
+    } else {
+        var arr = element.childNodes;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].nodeType === 1) {
                 return arr[i];
             }
         }
@@ -93,12 +93,12 @@ function getFirstElement(element) {
  */
 
 function getLastElement(element) {
-    if (element.lastElementChild){
+    if (element.lastElementChild) {
         return element.lastElementChild;
     } else {
-        var arr=element.childNodes;
-        for (let i = arr.length-1; i >=0 ; i--) {
-            if (arr[i].nodeType===1){
+        var arr = element.childNodes;
+        for (let i = arr.length - 1; i >= 0; i--) {
+            if (arr[i].nodeType === 1) {
                 return arr[i];
             }
         }

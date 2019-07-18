@@ -4,10 +4,31 @@
     <meta charset="UTF-8">
     <title>全选反选</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <!-- <style type="text/css">
+         table{
+             width: 800px;
+             border: 1px;
+            /* //border-collapse: collapse;//当两条边线重合的时候只显示一条边线*/
+         }
+     </style>-->
     <script src="../template/template-web.js"></script>
+    <script src="../utils/JSUtils.js"></script>
+
+    <style type="text/css">
+        #tt {
+            width: 800px;
+
+            border-collapse: collapse;
+        / / 当两条边线重合的时候只显示一条边线
+        }
+
+        tbody {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<table class="table-dark table-primary" width="800" border="1px">
+<table id="tt" border="1">
     <thead>
     <tr>
         <td>
@@ -15,6 +36,7 @@
         </td>
         <td>名称</td>
         <td>图片</td>
+        <td>操作</td>
     </tr>
     </thead>
     <tbody id="tbs">
@@ -31,6 +53,9 @@
         <td><input type="checkbox"></td>
         <td>{{mydata[$index].name}}</td>
         <td><img src="{{mydata[$index].src}}" alt=""></td>
+        <td>
+            <button class="btn-primary">删除</button>
+        </td>
 
         <!--{{each $value}}
         {{if $index=='src'}}
@@ -94,19 +119,29 @@
         //实现反选功能
         var fanxuan = document.getElementById("fanxuan");
         fanxuan.onclick = function () {
-            var  isAllChoose=true;
+            var isAllChoose = true;
             for (let i = 0; i < array.length; i++) {
-                array[i].checked=!array[i].checked;
-                if (!array[i].checked){
-                    isAllChoose=false;
+                array[i].checked = !array[i].checked;
+                if (!array[i].checked) {
+                    isAllChoose = false;
                 }
             }
-            quanxuan.checked=isAllChoose;
+            quanxuan.checked = isAllChoose;
         }
+        //删除功能
+        var trArr = tbs.children;
+        for (let i = 0; i < trArr.length; i++) {
+            let tr = trArr[i];
+            let td = getLastElement(tr);
+            let btn = getFirstElement(td);
+            console.dir(btn);
+            btn.onclick=function () {
+                tbs.removeChild(tr);
+                tbs.replaceChild()
 
+            }
+        }
     }
-
-
 </script>
 
 </body>

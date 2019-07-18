@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选水果</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <style>
+        select{
+            width: 200px;
+            height: 150px;
+            background-color: #33cccc;
+            font-size: 20px;
+            float: left;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+<select name="" id="first" multiple>
+    <option value="">A</option>
+    <option value="">B</option>
+    <option value="">C</option>
+    <option value="">D</option>
+    <option value="">E</option>
+    <option value="">F</option>
+</select>
+
+
+<select name="" id="second" multiple></select>
+<br><br><br><br><br><br><br><br><br>
+<div id="div">
+    <button class="btn-primary">&gt;&gt;&gt;</button>
+    <button class="btn-primary">&lt;&lt;&lt;</button>
+    <button class="btn-primary">&gt;</button>
+    <button class="btn-primary">&lt;</button>
+</div>
+
+<script>
+   var div= document.getElementById('div');
+   var first=document.getElementById('first');
+   var second=document.getElementById('second');
+   for (let i = 0; i < div.children.length; i++) {
+       div.children[i].onclick=function () {
+           switch (i) {
+               case 0:
+                   for (let j = 0; j <first.children.length; j=0) {
+                       second.appendChild(first.children[0])
+                   }
+                   break
+               case 1:
+                   for (let j = 0; j <second.children.length; j=0) {
+                       first.appendChild(second.children[0])
+                   }
+                   break
+               case 2:
+                   var flag=[];
+                   for (let j = 0; j <first.children.length; j++) {
+                       if (first.children[j].selected){
+                           flag.push(first.children[j])
+                       }
+                   }
+                   console.log(flag.length);
+                   for (let j = 0; j <flag.length; j++) {
+                       //console.dir(flag[0]);
+                       second.appendChild(flag[j])
+                       //delete  flag[0];
+                   }
+
+                   for (let j = 0; j < second.children.length; j++) {
+                       second.children[j].selected=false;
+                   }
+                   break
+               case 3:
+                   var flag=[];
+                   for (let j = 0; j <second.children.length; j++) {
+                       if (second.children[j].selected){
+                           flag.push(second.children[j])
+                       }
+                   }
+                   console.log(flag.length);
+                   for (let j = 0; j <flag.length; j++) {
+                       //console.dir(flag[0]);
+                       first.appendChild(flag[j])
+                       //delete  flag[0];
+                   }
+
+                   for (let j = 0; j < first.children.length; j++) {
+                       first.children[j].selected=false;
+                   }
+                   break
+
+
+           }
+
+
+          // second.appendChild();
+
+          //  for (let j = first.children.length-1; j >=0 ; j--) {
+          //      second.appendChild(first.children[j])
+          //  }
+       }
+
+
+   }
+</script>
+
+
+
+</body>
+</html>
