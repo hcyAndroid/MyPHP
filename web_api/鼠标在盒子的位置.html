@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标在盒子的位置</title>
+    <script src="../utils/JSUtils.js"></script>
+    <style>
+        #div {
+            width: 400px;
+            height: 400px;
+            margin-left: 100px;
+            margin-top: 100px;
+            background-color: #005cbf;
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<script>
+    my$('div').onmousemove=function (e) {
+       // console.log(e.clientX,e.clientY);
+        console.log(this.offsetLeft,this.offsetTop);
+        my$('div').innerText=  (getMousePosition(e).pageX-this.offsetLeft)+"/"+ (getMousePosition(e).pageY-this.offsetTop);
+    }
+</script>
+</body>
+</html>

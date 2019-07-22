@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件捕获</title>
+    <style>
+        .highlight {
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+<ul id="ul">
+    <li>1name</li>
+    <li>2name</li>
+    <li>3name</li>
+    <li>4name</li>
+    <li>5name</li>
+    <li>6name</li>
+    <li>7name</li>
+    <li>8name</li>
+</ul>
+<script src="../utils/JSUtils.js"></script>
+<script>
+    my$('ul').addEventListener('click', function (e) {
+        //e.target 是真正触发事件的元素对象
+        //e 事件参数，也是事件对象
+        e = e || window.event;//ie兼容性写法
+
+
+        var target=e.target||e.srcElement;
+        console.dir(target);
+        console.dir(e.currentTarget);
+        console.log(e.eventPhase);
+        for (let i = 0; i < my$('ul').children.length; i++) {
+            my$('ul').children[i].removeAttribute('class');
+        }
+        e.target.setAttribute('class', 'highlight');
+        console.dir(e.target.innerText);
+    })
+</script>
+</body>
+</html>

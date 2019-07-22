@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移动</title>
+    <script src="../utils/JSUtils.js"></script>
+    <style>
+        div{
+            width: 3000px;
+            height: 3000px;
+            background-color: #1c7430;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<img id="pic" src="../file/5d0a047669d73-哈皮.png" alt="" width="30">
+
+<script>
+    var pic=my$('pic');
+   /* document.onmousemove=function(e){
+      pic.style.left=e.pageX+'px';
+        pic.style.right=e.pageY+'px';
+       /!* pic.style.marginLeft=e.pageX+"px";
+        pic.style.marginTop=e.pageY+'px';*!/
+    };*/
+    document.addEventListener('mousemove',function (e) {
+        pic.style.marginLeft=e.pageX-10+'px';
+        pic.style.marginTop=e.pageY-10+'px';
+        //document.body.scrollTop
+        console.dir(getScroll())
+    });
+</script>
+
+
+
+</body>
+</html>

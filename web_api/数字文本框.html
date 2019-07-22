@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数字文本框</title>
+    <script src="../utils/JSUtils.js"></script>
+</head>
+<body>
+<input type="text" id="text">
+
+<script>
+    my$('text').onkeydown=function (e) {
+        console.log("onkeydown",e.keyCode,e.key);
+        if ((e.keyCode<48||e.keyCode>57)&&e.keyCode!==8){
+            e.preventDefault();
+            //e.cancelBubble=true;
+        }
+    }
+
+    my$('text').onkeyup=function (e) {
+        console.log("onkeyup",e.keyCode,e.key);
+    }
+</script>
+</body>
+</html>

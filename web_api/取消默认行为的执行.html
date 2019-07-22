@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>取消默认行为的执行</title>
+    <script src="../utils/JSUtils.js"></script>
+</head>
+<body>
+
+<a id="a" href="http://www.baidu.com">666</a>
+
+
+<script>
+    my$("a").onclick = function (e) {
+        console.log("====???");
+        e = e || window.event;
+        // e.preventDefault();
+
+        e.returnValue=false;//ie老版本的方法,谷歌也支持
+    }
+</script>
+
+</body>
+</html>
