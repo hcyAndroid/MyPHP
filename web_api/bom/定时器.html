@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+<body>
+<script>
+    //返回的是一个整数，是定时器的标识
+    var timerId = setTimeout(function () {
+        alert("时间到了");
+    }, 5 * 1000);
+    var count = 0;
+    var timer = setInterval(function () {
+        console.log(++count);
+        if (count === 5) {
+            //取消定时器
+            clearTimeout(timerId);
+            clearInterval(timer);
+        }
+
+    }, 1 * 1000);
+</script>
+</body>
+</html>

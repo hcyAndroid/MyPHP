@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <script src="../../utils/TimeUtils.js"></script>
+    <script src="../../utils/JSUtils.js"></script>
+</head>
+<body>
+
+<div>
+    <p id="time"></p>
+</div>
+
+<script>
+    var endTime = new Date('2019-07-22 15:03:00');
+    var p=my$("time");
+
+    var func1=function () {
+        var obj = getTimeDifference(new Date(), endTime);
+        if (obj){
+            var arr=[];
+
+            arr.push(obj.day);
+            arr.push('天');
+            arr.push(obj.hour);
+            arr.push('时');
+            arr.push(obj.min);
+            arr.push('分')
+            arr.push(obj.sec);
+            arr.push('秒')
+            setInnerText(p,arr.join(''));
+        }else {
+            clearInterval(func1);
+        }
+
+    };
+
+    setInterval(func1, 1000);
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location</title>
+    <script src="../../utils/JSUtils.js"></script>
+</head>
+<body>
+
+<button id="btn">页面跳转</button>
+
+<script>
+    console.dir(location);
+    my$('btn').addEventListener('click',function () {
+        //location.href='http://www.baidu.com';
+        location.reload();
+        //console.log(location.assign('http://www.baidu.com'));
+    });
+
+</script>
+</body>
+</html>

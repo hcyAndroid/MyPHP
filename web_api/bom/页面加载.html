@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面加载</title>
+    <script src="../../utils/JSUtils.js"></script>
+    <script>
+
+        onload = function () {
+            console.log(getInnerText(my$(666)));
+
+        }
+
+        onunload=function () {
+            console.log("-----");
+        }
+
+    </script>
+</head>
+<body>
+
+<div id="666">8888</div>
+
+
+</body>
+</html>

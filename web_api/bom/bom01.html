@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bom对话框</title>
+    <script src="../../utils/JSUtils.js">
+
+    </script>
+</head>
+<body>
+<script>
+
+    var logs = 1;
+    var name = 10;
+    var top = 'top';
+    console.log(typeof name, typeof logs, top);
+</script>
+<input type="button" id="alert" value="alert">
+<input type="button" id="prompt" value="prompt">
+<input type="button" id="confirm" value="confirm">
+<script>
+    my$('alert').onclick = function () {
+        alert("========")
+    }
+    my$('prompt').onclick = function () {
+        var msg = prompt("请输入:::")
+        console.log(msg);
+    }
+    my$('confirm').onclick = function () {
+        var flag=confirm("确定:::")
+        console.log(flag);
+    }
+</script>
+
+</body>
+</html>
